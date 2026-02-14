@@ -1,0 +1,3072 @@
+{
+  "ADMISSIONS.csv": {
+    "path": "ADMISSIONS.csv",
+    "exists": true,
+    "size_bytes": 26823,
+    "size_human": "26.2KB",
+    "loaded_rows": 129,
+    "sampled": false,
+    "n_columns": 19,
+    "columns": [
+      "ROW_ID",
+      "SUBJECT_ID",
+      "HADM_ID",
+      "ADMITTIME",
+      "DISCHTIME",
+      "DEATHTIME",
+      "ADMISSION_TYPE",
+      "ADMISSION_LOCATION",
+      "DISCHARGE_LOCATION",
+      "INSURANCE",
+      "LANGUAGE",
+      "RELIGION",
+      "MARITAL_STATUS",
+      "ETHNICITY",
+      "EDREGTIME",
+      "EDOUTTIME",
+      "DIAGNOSIS",
+      "HOSPITAL_EXPIRE_FLAG",
+      "HAS_CHARTEVENTS_DATA"
+    ],
+    "columns_summary": {
+      "ROW_ID": {
+        "dtype_sample": "int64",
+        "non_null": 129,
+        "nulls": 0,
+        "n_unique": 129,
+        "datetime_candidate": false,
+        "non_numeric_entries": 0,
+        "id_non_integer": 0,
+        "id_na_in_sample": 0
+      },
+      "SUBJECT_ID": {
+        "dtype_sample": "int64",
+        "non_null": 129,
+        "nulls": 0,
+        "n_unique": 100,
+        "datetime_candidate": false,
+        "non_numeric_entries": 0,
+        "id_non_integer": 0,
+        "id_na_in_sample": 0
+      },
+      "HADM_ID": {
+        "dtype_sample": "int64",
+        "non_null": 129,
+        "nulls": 0,
+        "n_unique": 129,
+        "datetime_candidate": false,
+        "non_numeric_entries": 0,
+        "id_non_integer": 0,
+        "id_na_in_sample": 0
+      },
+      "ADMITTIME": {
+        "dtype_sample": "str",
+        "non_null": 129,
+        "nulls": 0,
+        "n_unique": 129,
+        "datetime_candidate": true,
+        "datetime_parse_error": "TypeError(\"to_datetime() got an unexpected keyword argument 'infer_datetime_format'\")"
+      },
+      "DISCHTIME": {
+        "dtype_sample": "str",
+        "non_null": 129,
+        "nulls": 0,
+        "n_unique": 129,
+        "datetime_candidate": true,
+        "datetime_parse_error": "TypeError(\"to_datetime() got an unexpected keyword argument 'infer_datetime_format'\")"
+      },
+      "DEATHTIME": {
+        "dtype_sample": "str",
+        "non_null": 40,
+        "nulls": 89,
+        "n_unique": 40,
+        "datetime_candidate": true,
+        "datetime_parse_error": "TypeError(\"to_datetime() got an unexpected keyword argument 'infer_datetime_format'\")"
+      },
+      "ADMISSION_TYPE": {
+        "dtype_sample": "str",
+        "non_null": 129,
+        "nulls": 0,
+        "n_unique": 3,
+        "datetime_candidate": false
+      },
+      "ADMISSION_LOCATION": {
+        "dtype_sample": "str",
+        "non_null": 129,
+        "nulls": 0,
+        "n_unique": 5,
+        "datetime_candidate": false
+      },
+      "DISCHARGE_LOCATION": {
+        "dtype_sample": "str",
+        "non_null": 129,
+        "nulls": 0,
+        "n_unique": 10,
+        "datetime_candidate": false
+      },
+      "INSURANCE": {
+        "dtype_sample": "str",
+        "non_null": 129,
+        "nulls": 0,
+        "n_unique": 4,
+        "datetime_candidate": false
+      },
+      "LANGUAGE": {
+        "dtype_sample": "str",
+        "non_null": 81,
+        "nulls": 48,
+        "n_unique": 5,
+        "datetime_candidate": false
+      },
+      "RELIGION": {
+        "dtype_sample": "str",
+        "non_null": 128,
+        "nulls": 1,
+        "n_unique": 10,
+        "datetime_candidate": false
+      },
+      "MARITAL_STATUS": {
+        "dtype_sample": "str",
+        "non_null": 113,
+        "nulls": 16,
+        "n_unique": 6,
+        "datetime_candidate": false
+      },
+      "ETHNICITY": {
+        "dtype_sample": "str",
+        "non_null": 129,
+        "nulls": 0,
+        "n_unique": 9,
+        "datetime_candidate": false
+      },
+      "EDREGTIME": {
+        "dtype_sample": "str",
+        "non_null": 92,
+        "nulls": 37,
+        "n_unique": 92,
+        "datetime_candidate": true,
+        "datetime_parse_error": "TypeError(\"to_datetime() got an unexpected keyword argument 'infer_datetime_format'\")"
+      },
+      "EDOUTTIME": {
+        "dtype_sample": "str",
+        "non_null": 92,
+        "nulls": 37,
+        "n_unique": 92,
+        "datetime_candidate": true,
+        "datetime_parse_error": "TypeError(\"to_datetime() got an unexpected keyword argument 'infer_datetime_format'\")"
+      },
+      "DIAGNOSIS": {
+        "dtype_sample": "str",
+        "non_null": 129,
+        "nulls": 0,
+        "n_unique": 95,
+        "datetime_candidate": false
+      },
+      "HOSPITAL_EXPIRE_FLAG": {
+        "dtype_sample": "int64",
+        "non_null": 129,
+        "nulls": 0,
+        "n_unique": 2,
+        "datetime_candidate": false,
+        "non_numeric_entries": 0
+      },
+      "HAS_CHARTEVENTS_DATA": {
+        "dtype_sample": "int64",
+        "non_null": 129,
+        "nulls": 0,
+        "n_unique": 2,
+        "datetime_candidate": false,
+        "non_numeric_entries": 0
+      }
+    }
+  },
+  "CALLOUT.csv": {
+    "path": "CALLOUT.csv",
+    "exists": true,
+    "size_bytes": 13820,
+    "size_human": "13.5KB",
+    "loaded_rows": 77,
+    "sampled": false,
+    "n_columns": 24,
+    "columns": [
+      "ROW_ID",
+      "SUBJECT_ID",
+      "HADM_ID",
+      "SUBMIT_WARDID",
+      "SUBMIT_CAREUNIT",
+      "CURR_WARDID",
+      "CURR_CAREUNIT",
+      "CALLOUT_WARDID",
+      "CALLOUT_SERVICE",
+      "REQUEST_TELE",
+      "REQUEST_RESP",
+      "REQUEST_CDIFF",
+      "REQUEST_MRSA",
+      "REQUEST_VRE",
+      "CALLOUT_STATUS",
+      "CALLOUT_OUTCOME",
+      "DISCHARGE_WARDID",
+      "ACKNOWLEDGE_STATUS",
+      "CREATETIME",
+      "UPDATETIME",
+      "ACKNOWLEDGETIME",
+      "OUTCOMETIME",
+      "FIRSTRESERVATIONTIME",
+      "CURRENTRESERVATIONTIME"
+    ],
+    "columns_summary": {
+      "ROW_ID": {
+        "dtype_sample": "int64",
+        "non_null": 77,
+        "nulls": 0,
+        "n_unique": 77,
+        "datetime_candidate": false,
+        "non_numeric_entries": 0,
+        "id_non_integer": 0,
+        "id_na_in_sample": 0
+      },
+      "SUBJECT_ID": {
+        "dtype_sample": "int64",
+        "non_null": 77,
+        "nulls": 0,
+        "n_unique": 51,
+        "datetime_candidate": false,
+        "non_numeric_entries": 0,
+        "id_non_integer": 0,
+        "id_na_in_sample": 0
+      },
+      "HADM_ID": {
+        "dtype_sample": "int64",
+        "non_null": 77,
+        "nulls": 0,
+        "n_unique": 67,
+        "datetime_candidate": false,
+        "non_numeric_entries": 0,
+        "id_non_integer": 0,
+        "id_na_in_sample": 0
+      },
+      "SUBMIT_WARDID": {
+        "dtype_sample": "int64",
+        "non_null": 77,
+        "nulls": 0,
+        "n_unique": 9,
+        "datetime_candidate": false,
+        "non_numeric_entries": 0
+      },
+      "SUBMIT_CAREUNIT": {
+        "dtype_sample": "str",
+        "non_null": 9,
+        "nulls": 68,
+        "n_unique": 4,
+        "datetime_candidate": false
+      },
+      "CURR_WARDID": {
+        "dtype_sample": "int64",
+        "non_null": 77,
+        "nulls": 0,
+        "n_unique": 21,
+        "datetime_candidate": false,
+        "non_numeric_entries": 0
+      },
+      "CURR_CAREUNIT": {
+        "dtype_sample": "str",
+        "non_null": 77,
+        "nulls": 0,
+        "n_unique": 5,
+        "datetime_candidate": false
+      },
+      "CALLOUT_WARDID": {
+        "dtype_sample": "int64",
+        "non_null": 77,
+        "nulls": 0,
+        "n_unique": 11,
+        "datetime_candidate": false,
+        "non_numeric_entries": 0
+      },
+      "CALLOUT_SERVICE": {
+        "dtype_sample": "str",
+        "non_null": 77,
+        "nulls": 0,
+        "n_unique": 10,
+        "datetime_candidate": false
+      },
+      "REQUEST_TELE": {
+        "dtype_sample": "int64",
+        "non_null": 77,
+        "nulls": 0,
+        "n_unique": 2,
+        "datetime_candidate": false,
+        "non_numeric_entries": 0
+      },
+      "REQUEST_RESP": {
+        "dtype_sample": "int64",
+        "non_null": 77,
+        "nulls": 0,
+        "n_unique": 1,
+        "datetime_candidate": false,
+        "non_numeric_entries": 0
+      },
+      "REQUEST_CDIFF": {
+        "dtype_sample": "int64",
+        "non_null": 77,
+        "nulls": 0,
+        "n_unique": 2,
+        "datetime_candidate": false,
+        "non_numeric_entries": 0
+      },
+      "REQUEST_MRSA": {
+        "dtype_sample": "int64",
+        "non_null": 77,
+        "nulls": 0,
+        "n_unique": 2,
+        "datetime_candidate": false,
+        "non_numeric_entries": 0
+      },
+      "REQUEST_VRE": {
+        "dtype_sample": "int64",
+        "non_null": 77,
+        "nulls": 0,
+        "n_unique": 2,
+        "datetime_candidate": false,
+        "non_numeric_entries": 0
+      },
+      "CALLOUT_STATUS": {
+        "dtype_sample": "str",
+        "non_null": 77,
+        "nulls": 0,
+        "n_unique": 1,
+        "datetime_candidate": false
+      },
+      "CALLOUT_OUTCOME": {
+        "dtype_sample": "str",
+        "non_null": 77,
+        "nulls": 0,
+        "n_unique": 2,
+        "datetime_candidate": false
+      },
+      "DISCHARGE_WARDID": {
+        "dtype_sample": "float64",
+        "non_null": 71,
+        "nulls": 6,
+        "n_unique": 15,
+        "datetime_candidate": false,
+        "non_numeric_entries": 0
+      },
+      "ACKNOWLEDGE_STATUS": {
+        "dtype_sample": "str",
+        "non_null": 77,
+        "nulls": 0,
+        "n_unique": 2,
+        "datetime_candidate": false
+      },
+      "CREATETIME": {
+        "dtype_sample": "str",
+        "non_null": 77,
+        "nulls": 0,
+        "n_unique": 77,
+        "datetime_candidate": true,
+        "datetime_parse_error": "TypeError(\"to_datetime() got an unexpected keyword argument 'infer_datetime_format'\")"
+      },
+      "UPDATETIME": {
+        "dtype_sample": "str",
+        "non_null": 77,
+        "nulls": 0,
+        "n_unique": 77,
+        "datetime_candidate": true,
+        "datetime_parse_error": "TypeError(\"to_datetime() got an unexpected keyword argument 'infer_datetime_format'\")"
+      },
+      "ACKNOWLEDGETIME": {
+        "dtype_sample": "str",
+        "non_null": 74,
+        "nulls": 3,
+        "n_unique": 74,
+        "datetime_candidate": true,
+        "datetime_parse_error": "TypeError(\"to_datetime() got an unexpected keyword argument 'infer_datetime_format'\")"
+      },
+      "OUTCOMETIME": {
+        "dtype_sample": "str",
+        "non_null": 77,
+        "nulls": 0,
+        "n_unique": 77,
+        "datetime_candidate": true,
+        "datetime_parse_error": "TypeError(\"to_datetime() got an unexpected keyword argument 'infer_datetime_format'\")"
+      },
+      "FIRSTRESERVATIONTIME": {
+        "dtype_sample": "str",
+        "non_null": 39,
+        "nulls": 38,
+        "n_unique": 39,
+        "datetime_candidate": true,
+        "datetime_parse_error": "TypeError(\"to_datetime() got an unexpected keyword argument 'infer_datetime_format'\")"
+      },
+      "CURRENTRESERVATIONTIME": {
+        "dtype_sample": "str",
+        "non_null": 5,
+        "nulls": 72,
+        "n_unique": 5,
+        "datetime_candidate": true,
+        "datetime_parse_error": "TypeError(\"to_datetime() got an unexpected keyword argument 'infer_datetime_format'\")"
+      }
+    }
+  },
+  "CAREGIVERS.csv": {
+    "path": "CAREGIVERS.csv",
+    "exists": true,
+    "size_bytes": 178142,
+    "size_human": "174.0KB",
+    "loaded_rows": 7567,
+    "sampled": false,
+    "n_columns": 4,
+    "columns": [
+      "ROW_ID",
+      "CGID",
+      "LABEL",
+      "DESCRIPTION"
+    ],
+    "columns_summary": {
+      "ROW_ID": {
+        "dtype_sample": "int64",
+        "non_null": 7567,
+        "nulls": 0,
+        "n_unique": 7567,
+        "datetime_candidate": false,
+        "non_numeric_entries": 0,
+        "id_non_integer": 0,
+        "id_na_in_sample": 0
+      },
+      "CGID": {
+        "dtype_sample": "int64",
+        "non_null": 7567,
+        "nulls": 0,
+        "n_unique": 7567,
+        "datetime_candidate": false,
+        "non_numeric_entries": 0
+      },
+      "LABEL": {
+        "dtype_sample": "str",
+        "non_null": 7518,
+        "nulls": 49,
+        "n_unique": 230,
+        "datetime_candidate": false
+      },
+      "DESCRIPTION": {
+        "dtype_sample": "str",
+        "non_null": 5155,
+        "nulls": 2412,
+        "n_unique": 16,
+        "datetime_candidate": false
+      }
+    }
+  },
+  "CHARTEVENTS.csv": {
+    "path": "CHARTEVENTS.csv",
+    "exists": true,
+    "size_bytes": 77730362,
+    "size_human": "74.1MB",
+    "loaded_rows": 758355,
+    "sampled": false,
+    "n_columns": 15,
+    "columns": [
+      "ROW_ID",
+      "SUBJECT_ID",
+      "HADM_ID",
+      "ICUSTAY_ID",
+      "ITEMID",
+      "CHARTTIME",
+      "STORETIME",
+      "CGID",
+      "VALUE",
+      "VALUENUM",
+      "VALUEUOM",
+      "WARNING",
+      "ERROR",
+      "RESULTSTATUS",
+      "STOPPED"
+    ],
+    "columns_summary": {
+      "ROW_ID": {
+        "dtype_sample": "int64",
+        "non_null": 758355,
+        "nulls": 0,
+        "n_unique": 758355,
+        "datetime_candidate": false,
+        "non_numeric_entries": 0,
+        "id_non_integer": 0,
+        "id_na_in_sample": 0
+      },
+      "SUBJECT_ID": {
+        "dtype_sample": "int64",
+        "non_null": 758355,
+        "nulls": 0,
+        "n_unique": 99,
+        "datetime_candidate": false,
+        "non_numeric_entries": 0,
+        "id_non_integer": 0,
+        "id_na_in_sample": 0
+      },
+      "HADM_ID": {
+        "dtype_sample": "int64",
+        "non_null": 758355,
+        "nulls": 0,
+        "n_unique": 126,
+        "datetime_candidate": false,
+        "non_numeric_entries": 0,
+        "id_non_integer": 0,
+        "id_na_in_sample": 0
+      },
+      "ICUSTAY_ID": {
+        "dtype_sample": "float64",
+        "non_null": 758274,
+        "nulls": 81,
+        "n_unique": 133,
+        "datetime_candidate": false,
+        "non_numeric_entries": 0,
+        "id_non_integer": 0,
+        "id_na_in_sample": 81
+      },
+      "ITEMID": {
+        "dtype_sample": "int64",
+        "non_null": 758355,
+        "nulls": 0,
+        "n_unique": 1679,
+        "datetime_candidate": false,
+        "non_numeric_entries": 0
+      },
+      "CHARTTIME": {
+        "dtype_sample": "str",
+        "non_null": 758355,
+        "nulls": 0,
+        "n_unique": 30866,
+        "datetime_candidate": true,
+        "datetime_parse_error": "TypeError(\"to_datetime() got an unexpected keyword argument 'infer_datetime_format'\")"
+      },
+      "STORETIME": {
+        "dtype_sample": "str",
+        "non_null": 758355,
+        "nulls": 0,
+        "n_unique": 48532,
+        "datetime_candidate": true,
+        "datetime_parse_error": "TypeError(\"to_datetime() got an unexpected keyword argument 'infer_datetime_format'\")"
+      },
+      "CGID": {
+        "dtype_sample": "int64",
+        "non_null": 758355,
+        "nulls": 0,
+        "n_unique": 592,
+        "datetime_candidate": false,
+        "non_numeric_entries": 0
+      },
+      "VALUE": {
+        "dtype_sample": "str",
+        "non_null": 725507,
+        "nulls": 32848,
+        "n_unique": 9667,
+        "datetime_candidate": false
+      },
+      "VALUENUM": {
+        "dtype_sample": "float64",
+        "non_null": 323884,
+        "nulls": 434471,
+        "n_unique": 8034,
+        "datetime_candidate": false,
+        "non_numeric_entries": 0
+      },
+      "VALUEUOM": {
+        "dtype_sample": "str",
+        "non_null": 239855,
+        "nulls": 518500,
+        "n_unique": 71,
+        "datetime_candidate": false
+      },
+      "WARNING": {
+        "dtype_sample": "float64",
+        "non_null": 382279,
+        "nulls": 376076,
+        "n_unique": 2,
+        "datetime_candidate": false,
+        "non_numeric_entries": 0
+      },
+      "ERROR": {
+        "dtype_sample": "float64",
+        "non_null": 382279,
+        "nulls": 376076,
+        "n_unique": 2,
+        "datetime_candidate": false,
+        "non_numeric_entries": 0
+      },
+      "RESULTSTATUS": {
+        "dtype_sample": "str",
+        "non_null": 21674,
+        "nulls": 736681,
+        "n_unique": 2,
+        "datetime_candidate": false
+      },
+      "STOPPED": {
+        "dtype_sample": "str",
+        "non_null": 374649,
+        "nulls": 383706,
+        "n_unique": 2,
+        "datetime_candidate": false
+      }
+    }
+  },
+  "CPTEVENTS.csv": {
+    "path": "CPTEVENTS.csv",
+    "exists": true,
+    "size_bytes": 149024,
+    "size_human": "145.5KB",
+    "loaded_rows": 1579,
+    "sampled": false,
+    "n_columns": 12,
+    "columns": [
+      "ROW_ID",
+      "SUBJECT_ID",
+      "HADM_ID",
+      "COSTCENTER",
+      "CHARTDATE",
+      "CPT_CD",
+      "CPT_NUMBER",
+      "CPT_SUFFIX",
+      "TICKET_ID_SEQ",
+      "SECTIONHEADER",
+      "SUBSECTIONHEADER",
+      "DESCRIPTION"
+    ],
+    "columns_summary": {
+      "ROW_ID": {
+        "dtype_sample": "int64",
+        "non_null": 1579,
+        "nulls": 0,
+        "n_unique": 1579,
+        "datetime_candidate": false,
+        "non_numeric_entries": 0,
+        "id_non_integer": 0,
+        "id_na_in_sample": 0
+      },
+      "SUBJECT_ID": {
+        "dtype_sample": "int64",
+        "non_null": 1579,
+        "nulls": 0,
+        "n_unique": 91,
+        "datetime_candidate": false,
+        "non_numeric_entries": 0,
+        "id_non_integer": 0,
+        "id_na_in_sample": 0
+      },
+      "HADM_ID": {
+        "dtype_sample": "int64",
+        "non_null": 1579,
+        "nulls": 0,
+        "n_unique": 118,
+        "datetime_candidate": false,
+        "non_numeric_entries": 0,
+        "id_non_integer": 0,
+        "id_na_in_sample": 0
+      },
+      "COSTCENTER": {
+        "dtype_sample": "str",
+        "non_null": 1579,
+        "nulls": 0,
+        "n_unique": 2,
+        "datetime_candidate": false
+      },
+      "CHARTDATE": {
+        "dtype_sample": "str",
+        "non_null": 291,
+        "nulls": 1288,
+        "n_unique": 284,
+        "datetime_candidate": true,
+        "datetime_parse_error": "TypeError(\"to_datetime() got an unexpected keyword argument 'infer_datetime_format'\")"
+      },
+      "CPT_CD": {
+        "dtype_sample": "int64",
+        "non_null": 1579,
+        "nulls": 0,
+        "n_unique": 74,
+        "datetime_candidate": false,
+        "non_numeric_entries": 0
+      },
+      "CPT_NUMBER": {
+        "dtype_sample": "int64",
+        "non_null": 1579,
+        "nulls": 0,
+        "n_unique": 74,
+        "datetime_candidate": false,
+        "non_numeric_entries": 0
+      },
+      "CPT_SUFFIX": {
+        "dtype_sample": "float64",
+        "non_null": 0,
+        "nulls": 1579,
+        "n_unique": 0,
+        "datetime_candidate": false,
+        "non_numeric_entries": 0
+      },
+      "TICKET_ID_SEQ": {
+        "dtype_sample": "float64",
+        "non_null": 1288,
+        "nulls": 291,
+        "n_unique": 191,
+        "datetime_candidate": false,
+        "non_numeric_entries": 0
+      },
+      "SECTIONHEADER": {
+        "dtype_sample": "str",
+        "non_null": 1579,
+        "nulls": 0,
+        "n_unique": 4,
+        "datetime_candidate": false
+      },
+      "SUBSECTIONHEADER": {
+        "dtype_sample": "str",
+        "non_null": 1579,
+        "nulls": 0,
+        "n_unique": 21,
+        "datetime_candidate": false
+      },
+      "DESCRIPTION": {
+        "dtype_sample": "str",
+        "non_null": 291,
+        "nulls": 1288,
+        "n_unique": 4,
+        "datetime_candidate": false
+      }
+    }
+  },
+  "D_CPT.csv": {
+    "path": "D_CPT.csv",
+    "exists": true,
+    "size_bytes": 12717,
+    "size_human": "12.4KB",
+    "loaded_rows": 134,
+    "sampled": false,
+    "n_columns": 9,
+    "columns": [
+      "ROW_ID",
+      "CATEGORY",
+      "SECTIONRANGE",
+      "SECTIONHEADER",
+      "SUBSECTIONRANGE",
+      "SUBSECTIONHEADER",
+      "CODESUFFIX",
+      "MINCODEINSUBSECTION",
+      "MAXCODEINSUBSECTION"
+    ],
+    "columns_summary": {
+      "ROW_ID": {
+        "dtype_sample": "int64",
+        "non_null": 134,
+        "nulls": 0,
+        "n_unique": 134,
+        "datetime_candidate": false,
+        "non_numeric_entries": 0,
+        "id_non_integer": 0,
+        "id_na_in_sample": 0
+      },
+      "CATEGORY": {
+        "dtype_sample": "int64",
+        "non_null": 134,
+        "nulls": 0,
+        "n_unique": 3,
+        "datetime_candidate": false,
+        "non_numeric_entries": 0
+      },
+      "SECTIONRANGE": {
+        "dtype_sample": "str",
+        "non_null": 134,
+        "nulls": 0,
+        "n_unique": 9,
+        "datetime_candidate": false
+      },
+      "SECTIONHEADER": {
+        "dtype_sample": "str",
+        "non_null": 134,
+        "nulls": 0,
+        "n_unique": 8,
+        "datetime_candidate": false
+      },
+      "SUBSECTIONRANGE": {
+        "dtype_sample": "str",
+        "non_null": 134,
+        "nulls": 0,
+        "n_unique": 134,
+        "datetime_candidate": false
+      },
+      "SUBSECTIONHEADER": {
+        "dtype_sample": "str",
+        "non_null": 134,
+        "nulls": 0,
+        "n_unique": 132,
+        "datetime_candidate": false
+      },
+      "CODESUFFIX": {
+        "dtype_sample": "str",
+        "non_null": 11,
+        "nulls": 123,
+        "n_unique": 2,
+        "datetime_candidate": false
+      },
+      "MINCODEINSUBSECTION": {
+        "dtype_sample": "int64",
+        "non_null": 134,
+        "nulls": 0,
+        "n_unique": 133,
+        "datetime_candidate": false,
+        "non_numeric_entries": 0
+      },
+      "MAXCODEINSUBSECTION": {
+        "dtype_sample": "int64",
+        "non_null": 134,
+        "nulls": 0,
+        "n_unique": 134,
+        "datetime_candidate": false,
+        "non_numeric_entries": 0
+      }
+    }
+  },
+  "D_ICD_DIAGNOSES.csv": {
+    "path": "D_ICD_DIAGNOSES.csv",
+    "exists": true,
+    "size_bytes": 1313178,
+    "size_human": "1.3MB",
+    "loaded_rows": 14567,
+    "sampled": false,
+    "n_columns": 4,
+    "columns": [
+      "ROW_ID",
+      "ICD9_CODE",
+      "SHORT_TITLE",
+      "LONG_TITLE"
+    ],
+    "columns_summary": {
+      "ROW_ID": {
+        "dtype_sample": "int64",
+        "non_null": 14567,
+        "nulls": 0,
+        "n_unique": 14567,
+        "datetime_candidate": false,
+        "non_numeric_entries": 0,
+        "id_non_integer": 0,
+        "id_na_in_sample": 0
+      },
+      "ICD9_CODE": {
+        "dtype_sample": "str",
+        "non_null": 14567,
+        "nulls": 0,
+        "n_unique": 14567,
+        "datetime_candidate": false
+      },
+      "SHORT_TITLE": {
+        "dtype_sample": "str",
+        "non_null": 14567,
+        "nulls": 0,
+        "n_unique": 14328,
+        "datetime_candidate": false
+      },
+      "LONG_TITLE": {
+        "dtype_sample": "str",
+        "non_null": 14567,
+        "nulls": 0,
+        "n_unique": 14562,
+        "datetime_candidate": false
+      }
+    }
+  },
+  "D_ICD_PROCEDURES.csv": {
+    "path": "D_ICD_PROCEDURES.csv",
+    "exists": true,
+    "size_bytes": 289912,
+    "size_human": "283.1KB",
+    "loaded_rows": 3882,
+    "sampled": false,
+    "n_columns": 4,
+    "columns": [
+      "ROW_ID",
+      "ICD9_CODE",
+      "SHORT_TITLE",
+      "LONG_TITLE"
+    ],
+    "columns_summary": {
+      "ROW_ID": {
+        "dtype_sample": "int64",
+        "non_null": 3882,
+        "nulls": 0,
+        "n_unique": 3882,
+        "datetime_candidate": false,
+        "non_numeric_entries": 0,
+        "id_non_integer": 0,
+        "id_na_in_sample": 0
+      },
+      "ICD9_CODE": {
+        "dtype_sample": "int64",
+        "non_null": 3882,
+        "nulls": 0,
+        "n_unique": 3809,
+        "datetime_candidate": false,
+        "non_numeric_entries": 0
+      },
+      "SHORT_TITLE": {
+        "dtype_sample": "str",
+        "non_null": 3882,
+        "nulls": 0,
+        "n_unique": 3882,
+        "datetime_candidate": false
+      },
+      "LONG_TITLE": {
+        "dtype_sample": "str",
+        "non_null": 3882,
+        "nulls": 0,
+        "n_unique": 3882,
+        "datetime_candidate": false
+      }
+    }
+  },
+  "D_ITEMS.csv": {
+    "path": "D_ITEMS.csv",
+    "exists": true,
+    "size_bytes": 853168,
+    "size_human": "833.2KB",
+    "loaded_rows": 12487,
+    "sampled": false,
+    "n_columns": 10,
+    "columns": [
+      "ROW_ID",
+      "ITEMID",
+      "LABEL",
+      "ABBREVIATION",
+      "DBSOURCE",
+      "LINKSTO",
+      "CATEGORY",
+      "UNITNAME",
+      "PARAM_TYPE",
+      "CONCEPTID"
+    ],
+    "columns_summary": {
+      "ROW_ID": {
+        "dtype_sample": "int64",
+        "non_null": 12487,
+        "nulls": 0,
+        "n_unique": 12487,
+        "datetime_candidate": false,
+        "non_numeric_entries": 0,
+        "id_non_integer": 0,
+        "id_na_in_sample": 0
+      },
+      "ITEMID": {
+        "dtype_sample": "int64",
+        "non_null": 12487,
+        "nulls": 0,
+        "n_unique": 12487,
+        "datetime_candidate": false,
+        "non_numeric_entries": 0
+      },
+      "LABEL": {
+        "dtype_sample": "str",
+        "non_null": 12483,
+        "nulls": 4,
+        "n_unique": 11846,
+        "datetime_candidate": false
+      },
+      "ABBREVIATION": {
+        "dtype_sample": "str",
+        "non_null": 2992,
+        "nulls": 9495,
+        "n_unique": 2907,
+        "datetime_candidate": false
+      },
+      "DBSOURCE": {
+        "dtype_sample": "str",
+        "non_null": 12487,
+        "nulls": 0,
+        "n_unique": 3,
+        "datetime_candidate": false
+      },
+      "LINKSTO": {
+        "dtype_sample": "str",
+        "non_null": 12487,
+        "nulls": 0,
+        "n_unique": 7,
+        "datetime_candidate": false
+      },
+      "CATEGORY": {
+        "dtype_sample": "str",
+        "non_null": 6049,
+        "nulls": 6438,
+        "n_unique": 94,
+        "datetime_candidate": false
+      },
+      "UNITNAME": {
+        "dtype_sample": "str",
+        "non_null": 851,
+        "nulls": 11636,
+        "n_unique": 52,
+        "datetime_candidate": false
+      },
+      "PARAM_TYPE": {
+        "dtype_sample": "str",
+        "non_null": 2992,
+        "nulls": 9495,
+        "n_unique": 7,
+        "datetime_candidate": false
+      },
+      "CONCEPTID": {
+        "dtype_sample": "float64",
+        "non_null": 0,
+        "nulls": 12487,
+        "n_unique": 0,
+        "datetime_candidate": false,
+        "non_numeric_entries": 0
+      }
+    }
+  },
+  "D_LABITEMS.csv": {
+    "path": "D_LABITEMS.csv",
+    "exists": true,
+    "size_bytes": 37760,
+    "size_human": "36.9KB",
+    "loaded_rows": 753,
+    "sampled": false,
+    "n_columns": 6,
+    "columns": [
+      "ROW_ID",
+      "ITEMID",
+      "LABEL",
+      "FLUID",
+      "CATEGORY",
+      "LOINC_CODE"
+    ],
+    "columns_summary": {
+      "ROW_ID": {
+        "dtype_sample": "int64",
+        "non_null": 753,
+        "nulls": 0,
+        "n_unique": 753,
+        "datetime_candidate": false,
+        "non_numeric_entries": 0,
+        "id_non_integer": 0,
+        "id_na_in_sample": 0
+      },
+      "ITEMID": {
+        "dtype_sample": "int64",
+        "non_null": 753,
+        "nulls": 0,
+        "n_unique": 753,
+        "datetime_candidate": false,
+        "non_numeric_entries": 0
+      },
+      "LABEL": {
+        "dtype_sample": "str",
+        "non_null": 753,
+        "nulls": 0,
+        "n_unique": 589,
+        "datetime_candidate": false
+      },
+      "FLUID": {
+        "dtype_sample": "str",
+        "non_null": 753,
+        "nulls": 0,
+        "n_unique": 16,
+        "datetime_candidate": false
+      },
+      "CATEGORY": {
+        "dtype_sample": "str",
+        "non_null": 753,
+        "nulls": 0,
+        "n_unique": 6,
+        "datetime_candidate": false
+      },
+      "LOINC_CODE": {
+        "dtype_sample": "str",
+        "non_null": 585,
+        "nulls": 168,
+        "n_unique": 575,
+        "datetime_candidate": false
+      }
+    }
+  },
+  "DATETIMEEVENTS.csv": {
+    "path": "DATETIMEEVENTS.csv",
+    "exists": true,
+    "size_bytes": 1782801,
+    "size_human": "1.7MB",
+    "loaded_rows": 15551,
+    "sampled": false,
+    "n_columns": 14,
+    "columns": [
+      "ROW_ID",
+      "SUBJECT_ID",
+      "HADM_ID",
+      "ICUSTAY_ID",
+      "ITEMID",
+      "CHARTTIME",
+      "STORETIME",
+      "CGID",
+      "VALUE",
+      "VALUEUOM",
+      "WARNING",
+      "ERROR",
+      "RESULTSTATUS",
+      "STOPPED"
+    ],
+    "columns_summary": {
+      "ROW_ID": {
+        "dtype_sample": "int64",
+        "non_null": 15551,
+        "nulls": 0,
+        "n_unique": 15551,
+        "datetime_candidate": false,
+        "non_numeric_entries": 0,
+        "id_non_integer": 0,
+        "id_na_in_sample": 0
+      },
+      "SUBJECT_ID": {
+        "dtype_sample": "int64",
+        "non_null": 15551,
+        "nulls": 0,
+        "n_unique": 71,
+        "datetime_candidate": false,
+        "non_numeric_entries": 0,
+        "id_non_integer": 0,
+        "id_na_in_sample": 0
+      },
+      "HADM_ID": {
+        "dtype_sample": "int64",
+        "non_null": 15551,
+        "nulls": 0,
+        "n_unique": 95,
+        "datetime_candidate": false,
+        "non_numeric_entries": 0,
+        "id_non_integer": 0,
+        "id_na_in_sample": 0
+      },
+      "ICUSTAY_ID": {
+        "dtype_sample": "float64",
+        "non_null": 15539,
+        "nulls": 12,
+        "n_unique": 102,
+        "datetime_candidate": false,
+        "non_numeric_entries": 0,
+        "id_non_integer": 0,
+        "id_na_in_sample": 12
+      },
+      "ITEMID": {
+        "dtype_sample": "int64",
+        "non_null": 15551,
+        "nulls": 0,
+        "n_unique": 80,
+        "datetime_candidate": false,
+        "non_numeric_entries": 0
+      },
+      "CHARTTIME": {
+        "dtype_sample": "str",
+        "non_null": 15551,
+        "nulls": 0,
+        "n_unique": 3819,
+        "datetime_candidate": true,
+        "datetime_parse_error": "TypeError(\"to_datetime() got an unexpected keyword argument 'infer_datetime_format'\")"
+      },
+      "STORETIME": {
+        "dtype_sample": "str",
+        "non_null": 15551,
+        "nulls": 0,
+        "n_unique": 3844,
+        "datetime_candidate": true,
+        "datetime_parse_error": "TypeError(\"to_datetime() got an unexpected keyword argument 'infer_datetime_format'\")"
+      },
+      "CGID": {
+        "dtype_sample": "int64",
+        "non_null": 15551,
+        "nulls": 0,
+        "n_unique": 305,
+        "datetime_candidate": false,
+        "non_numeric_entries": 0
+      },
+      "VALUE": {
+        "dtype_sample": "str",
+        "non_null": 15467,
+        "nulls": 84,
+        "n_unique": 944,
+        "datetime_candidate": false
+      },
+      "VALUEUOM": {
+        "dtype_sample": "str",
+        "non_null": 15551,
+        "nulls": 0,
+        "n_unique": 2,
+        "datetime_candidate": false
+      },
+      "WARNING": {
+        "dtype_sample": "float64",
+        "non_null": 10914,
+        "nulls": 4637,
+        "n_unique": 1,
+        "datetime_candidate": false,
+        "non_numeric_entries": 0
+      },
+      "ERROR": {
+        "dtype_sample": "float64",
+        "non_null": 10914,
+        "nulls": 4637,
+        "n_unique": 1,
+        "datetime_candidate": false,
+        "non_numeric_entries": 0
+      },
+      "RESULTSTATUS": {
+        "dtype_sample": "float64",
+        "non_null": 0,
+        "nulls": 15551,
+        "n_unique": 0,
+        "datetime_candidate": false,
+        "non_numeric_entries": 0
+      },
+      "STOPPED": {
+        "dtype_sample": "str",
+        "non_null": 4637,
+        "nulls": 10914,
+        "n_unique": 2,
+        "datetime_candidate": false
+      }
+    }
+  },
+  "DIAGNOSES_ICD.csv": {
+    "path": "DIAGNOSES_ICD.csv",
+    "exists": true,
+    "size_bytes": 48997,
+    "size_human": "47.8KB",
+    "loaded_rows": 1761,
+    "sampled": false,
+    "n_columns": 5,
+    "columns": [
+      "ROW_ID",
+      "SUBJECT_ID",
+      "HADM_ID",
+      "SEQ_NUM",
+      "ICD9_CODE"
+    ],
+    "columns_summary": {
+      "ROW_ID": {
+        "dtype_sample": "int64",
+        "non_null": 1761,
+        "nulls": 0,
+        "n_unique": 1761,
+        "datetime_candidate": false,
+        "non_numeric_entries": 0,
+        "id_non_integer": 0,
+        "id_na_in_sample": 0
+      },
+      "SUBJECT_ID": {
+        "dtype_sample": "int64",
+        "non_null": 1761,
+        "nulls": 0,
+        "n_unique": 100,
+        "datetime_candidate": false,
+        "non_numeric_entries": 0,
+        "id_non_integer": 0,
+        "id_na_in_sample": 0
+      },
+      "HADM_ID": {
+        "dtype_sample": "int64",
+        "non_null": 1761,
+        "nulls": 0,
+        "n_unique": 129,
+        "datetime_candidate": false,
+        "non_numeric_entries": 0,
+        "id_non_integer": 0,
+        "id_na_in_sample": 0
+      },
+      "SEQ_NUM": {
+        "dtype_sample": "int64",
+        "non_null": 1761,
+        "nulls": 0,
+        "n_unique": 37,
+        "datetime_candidate": false,
+        "non_numeric_entries": 0
+      },
+      "ICD9_CODE": {
+        "dtype_sample": "str",
+        "non_null": 1761,
+        "nulls": 0,
+        "n_unique": 581,
+        "datetime_candidate": false
+      }
+    }
+  },
+  "DRGCODES.csv": {
+    "path": "DRGCODES.csv",
+    "exists": true,
+    "size_bytes": 23122,
+    "size_human": "22.6KB",
+    "loaded_rows": 297,
+    "sampled": false,
+    "n_columns": 8,
+    "columns": [
+      "ROW_ID",
+      "SUBJECT_ID",
+      "HADM_ID",
+      "DRG_TYPE",
+      "DRG_CODE",
+      "DESCRIPTION",
+      "DRG_SEVERITY",
+      "DRG_MORTALITY"
+    ],
+    "columns_summary": {
+      "ROW_ID": {
+        "dtype_sample": "int64",
+        "non_null": 297,
+        "nulls": 0,
+        "n_unique": 297,
+        "datetime_candidate": false,
+        "non_numeric_entries": 0,
+        "id_non_integer": 0,
+        "id_na_in_sample": 0
+      },
+      "SUBJECT_ID": {
+        "dtype_sample": "int64",
+        "non_null": 297,
+        "nulls": 0,
+        "n_unique": 100,
+        "datetime_candidate": false,
+        "non_numeric_entries": 0,
+        "id_non_integer": 0,
+        "id_na_in_sample": 0
+      },
+      "HADM_ID": {
+        "dtype_sample": "int64",
+        "non_null": 297,
+        "nulls": 0,
+        "n_unique": 129,
+        "datetime_candidate": false,
+        "non_numeric_entries": 0,
+        "id_non_integer": 0,
+        "id_na_in_sample": 0
+      },
+      "DRG_TYPE": {
+        "dtype_sample": "str",
+        "non_null": 297,
+        "nulls": 0,
+        "n_unique": 3,
+        "datetime_candidate": false
+      },
+      "DRG_CODE": {
+        "dtype_sample": "int64",
+        "non_null": 297,
+        "nulls": 0,
+        "n_unique": 160,
+        "datetime_candidate": false,
+        "non_numeric_entries": 0
+      },
+      "DESCRIPTION": {
+        "dtype_sample": "str",
+        "non_null": 297,
+        "nulls": 0,
+        "n_unique": 146,
+        "datetime_candidate": false
+      },
+      "DRG_SEVERITY": {
+        "dtype_sample": "float64",
+        "non_null": 168,
+        "nulls": 129,
+        "n_unique": 3,
+        "datetime_candidate": false,
+        "non_numeric_entries": 0
+      },
+      "DRG_MORTALITY": {
+        "dtype_sample": "float64",
+        "non_null": 168,
+        "nulls": 129,
+        "n_unique": 4,
+        "datetime_candidate": false,
+        "non_numeric_entries": 0
+      }
+    }
+  },
+  "INPUTEVENTS_CV.csv": {
+    "path": "INPUTEVENTS_CV.csv",
+    "exists": true,
+    "size_bytes": 4737419,
+    "size_human": "4.5MB",
+    "loaded_rows": 34799,
+    "sampled": false,
+    "n_columns": 22,
+    "columns": [
+      "ROW_ID",
+      "SUBJECT_ID",
+      "HADM_ID",
+      "ICUSTAY_ID",
+      "CHARTTIME",
+      "ITEMID",
+      "AMOUNT",
+      "AMOUNTUOM",
+      "RATE",
+      "RATEUOM",
+      "STORETIME",
+      "CGID",
+      "ORDERID",
+      "LINKORDERID",
+      "STOPPED",
+      "NEWBOTTLE",
+      "ORIGINALAMOUNT",
+      "ORIGINALAMOUNTUOM",
+      "ORIGINALROUTE",
+      "ORIGINALRATE",
+      "ORIGINALRATEUOM",
+      "ORIGINALSITE"
+    ],
+    "columns_summary": {
+      "ROW_ID": {
+        "dtype_sample": "int64",
+        "non_null": 34799,
+        "nulls": 0,
+        "n_unique": 34799,
+        "datetime_candidate": false,
+        "non_numeric_entries": 0,
+        "id_non_integer": 0,
+        "id_na_in_sample": 0
+      },
+      "SUBJECT_ID": {
+        "dtype_sample": "int64",
+        "non_null": 34799,
+        "nulls": 0,
+        "n_unique": 48,
+        "datetime_candidate": false,
+        "non_numeric_entries": 0,
+        "id_non_integer": 0,
+        "id_na_in_sample": 0
+      },
+      "HADM_ID": {
+        "dtype_sample": "int64",
+        "non_null": 34799,
+        "nulls": 0,
+        "n_unique": 55,
+        "datetime_candidate": false,
+        "non_numeric_entries": 0,
+        "id_non_integer": 0,
+        "id_na_in_sample": 0
+      },
+      "ICUSTAY_ID": {
+        "dtype_sample": "int64",
+        "non_null": 34799,
+        "nulls": 0,
+        "n_unique": 57,
+        "datetime_candidate": false,
+        "non_numeric_entries": 0,
+        "id_non_integer": 0,
+        "id_na_in_sample": 0
+      },
+      "CHARTTIME": {
+        "dtype_sample": "str",
+        "non_null": 34799,
+        "nulls": 0,
+        "n_unique": 6913,
+        "datetime_candidate": true,
+        "datetime_parse_error": "TypeError(\"to_datetime() got an unexpected keyword argument 'infer_datetime_format'\")"
+      },
+      "ITEMID": {
+        "dtype_sample": "int64",
+        "non_null": 34799,
+        "nulls": 0,
+        "n_unique": 79,
+        "datetime_candidate": false,
+        "non_numeric_entries": 0
+      },
+      "AMOUNT": {
+        "dtype_sample": "float64",
+        "non_null": 24738,
+        "nulls": 10061,
+        "n_unique": 1686,
+        "datetime_candidate": false,
+        "non_numeric_entries": 0
+      },
+      "AMOUNTUOM": {
+        "dtype_sample": "str",
+        "non_null": 25003,
+        "nulls": 9796,
+        "n_unique": 5,
+        "datetime_candidate": false
+      },
+      "RATE": {
+        "dtype_sample": "float64",
+        "non_null": 9462,
+        "nulls": 25337,
+        "n_unique": 292,
+        "datetime_candidate": false,
+        "non_numeric_entries": 0
+      },
+      "RATEUOM": {
+        "dtype_sample": "str",
+        "non_null": 9548,
+        "nulls": 25251,
+        "n_unique": 8,
+        "datetime_candidate": false
+      },
+      "STORETIME": {
+        "dtype_sample": "str",
+        "non_null": 34799,
+        "nulls": 0,
+        "n_unique": 6743,
+        "datetime_candidate": true,
+        "datetime_parse_error": "TypeError(\"to_datetime() got an unexpected keyword argument 'infer_datetime_format'\")"
+      },
+      "CGID": {
+        "dtype_sample": "float64",
+        "non_null": 34258,
+        "nulls": 541,
+        "n_unique": 272,
+        "datetime_candidate": false,
+        "non_numeric_entries": 0
+      },
+      "ORDERID": {
+        "dtype_sample": "int64",
+        "non_null": 34799,
+        "nulls": 0,
+        "n_unique": 18077,
+        "datetime_candidate": false,
+        "non_numeric_entries": 0
+      },
+      "LINKORDERID": {
+        "dtype_sample": "int64",
+        "non_null": 34799,
+        "nulls": 0,
+        "n_unique": 621,
+        "datetime_candidate": false,
+        "non_numeric_entries": 0
+      },
+      "STOPPED": {
+        "dtype_sample": "str",
+        "non_null": 810,
+        "nulls": 33989,
+        "n_unique": 4,
+        "datetime_candidate": false
+      },
+      "NEWBOTTLE": {
+        "dtype_sample": "float64",
+        "non_null": 522,
+        "nulls": 34277,
+        "n_unique": 1,
+        "datetime_candidate": false,
+        "non_numeric_entries": 0
+      },
+      "ORIGINALAMOUNT": {
+        "dtype_sample": "float64",
+        "non_null": 21214,
+        "nulls": 13585,
+        "n_unique": 41,
+        "datetime_candidate": false,
+        "non_numeric_entries": 0
+      },
+      "ORIGINALAMOUNTUOM": {
+        "dtype_sample": "str",
+        "non_null": 25234,
+        "nulls": 9565,
+        "n_unique": 8,
+        "datetime_candidate": false
+      },
+      "ORIGINALROUTE": {
+        "dtype_sample": "str",
+        "non_null": 34782,
+        "nulls": 17,
+        "n_unique": 7,
+        "datetime_candidate": false
+      },
+      "ORIGINALRATE": {
+        "dtype_sample": "float64",
+        "non_null": 11511,
+        "nulls": 23288,
+        "n_unique": 82,
+        "datetime_candidate": false,
+        "non_numeric_entries": 0
+      },
+      "ORIGINALRATEUOM": {
+        "dtype_sample": "str",
+        "non_null": 11515,
+        "nulls": 23284,
+        "n_unique": 1,
+        "datetime_candidate": false
+      },
+      "ORIGINALSITE": {
+        "dtype_sample": "str",
+        "non_null": 6,
+        "nulls": 34793,
+        "n_unique": 1,
+        "datetime_candidate": false
+      }
+    }
+  },
+  "INPUTEVENTS_MV.csv": {
+    "path": "INPUTEVENTS_MV.csv",
+    "exists": true,
+    "size_bytes": 3391394,
+    "size_human": "3.2MB",
+    "loaded_rows": 13224,
+    "sampled": false,
+    "n_columns": 31,
+    "columns": [
+      "ROW_ID",
+      "SUBJECT_ID",
+      "HADM_ID",
+      "ICUSTAY_ID",
+      "STARTTIME",
+      "ENDTIME",
+      "ITEMID",
+      "AMOUNT",
+      "AMOUNTUOM",
+      "RATE",
+      "RATEUOM",
+      "STORETIME",
+      "CGID",
+      "ORDERID",
+      "LINKORDERID",
+      "ORDERCATEGORYNAME",
+      "SECONDARYORDERCATEGORYNAME",
+      "ORDERCOMPONENTTYPEDESCRIPTION",
+      "ORDERCATEGORYDESCRIPTION",
+      "PATIENTWEIGHT",
+      "TOTALAMOUNT",
+      "TOTALAMOUNTUOM",
+      "ISOPENBAG",
+      "CONTINUEINNEXTDEPT",
+      "CANCELREASON",
+      "STATUSDESCRIPTION",
+      "COMMENTS_EDITEDBY",
+      "COMMENTS_CANCELEDBY",
+      "COMMENTS_DATE",
+      "ORIGINALAMOUNT",
+      "ORIGINALRATE"
+    ],
+    "columns_summary": {
+      "ROW_ID": {
+        "dtype_sample": "int64",
+        "non_null": 13224,
+        "nulls": 0,
+        "n_unique": 13224,
+        "datetime_candidate": false,
+        "non_numeric_entries": 0,
+        "id_non_integer": 0,
+        "id_na_in_sample": 0
+      },
+      "SUBJECT_ID": {
+        "dtype_sample": "int64",
+        "non_null": 13224,
+        "nulls": 0,
+        "n_unique": 50,
+        "datetime_candidate": false,
+        "non_numeric_entries": 0,
+        "id_non_integer": 0,
+        "id_na_in_sample": 0
+      },
+      "HADM_ID": {
+        "dtype_sample": "int64",
+        "non_null": 13224,
+        "nulls": 0,
+        "n_unique": 70,
+        "datetime_candidate": false,
+        "non_numeric_entries": 0,
+        "id_non_integer": 0,
+        "id_na_in_sample": 0
+      },
+      "ICUSTAY_ID": {
+        "dtype_sample": "int64",
+        "non_null": 13224,
+        "nulls": 0,
+        "n_unique": 75,
+        "datetime_candidate": false,
+        "non_numeric_entries": 0,
+        "id_non_integer": 0,
+        "id_na_in_sample": 0
+      },
+      "STARTTIME": {
+        "dtype_sample": "str",
+        "non_null": 13224,
+        "nulls": 0,
+        "n_unique": 6150,
+        "datetime_candidate": true,
+        "datetime_parse_error": "TypeError(\"to_datetime() got an unexpected keyword argument 'infer_datetime_format'\")"
+      },
+      "ENDTIME": {
+        "dtype_sample": "str",
+        "non_null": 13224,
+        "nulls": 0,
+        "n_unique": 7620,
+        "datetime_candidate": true,
+        "datetime_parse_error": "TypeError(\"to_datetime() got an unexpected keyword argument 'infer_datetime_format'\")"
+      },
+      "ITEMID": {
+        "dtype_sample": "int64",
+        "non_null": 13224,
+        "nulls": 0,
+        "n_unique": 135,
+        "datetime_candidate": false,
+        "non_numeric_entries": 0
+      },
+      "AMOUNT": {
+        "dtype_sample": "float64",
+        "non_null": 13224,
+        "nulls": 0,
+        "n_unique": 5439,
+        "datetime_candidate": false,
+        "non_numeric_entries": 0
+      },
+      "AMOUNTUOM": {
+        "dtype_sample": "str",
+        "non_null": 13224,
+        "nulls": 0,
+        "n_unique": 9,
+        "datetime_candidate": false
+      },
+      "RATE": {
+        "dtype_sample": "float64",
+        "non_null": 7335,
+        "nulls": 5889,
+        "n_unique": 3364,
+        "datetime_candidate": false,
+        "non_numeric_entries": 0
+      },
+      "RATEUOM": {
+        "dtype_sample": "str",
+        "non_null": 7335,
+        "nulls": 5889,
+        "n_unique": 11,
+        "datetime_candidate": false
+      },
+      "STORETIME": {
+        "dtype_sample": "str",
+        "non_null": 13224,
+        "nulls": 0,
+        "n_unique": 5480,
+        "datetime_candidate": true,
+        "datetime_parse_error": "TypeError(\"to_datetime() got an unexpected keyword argument 'infer_datetime_format'\")"
+      },
+      "CGID": {
+        "dtype_sample": "int64",
+        "non_null": 13224,
+        "nulls": 0,
+        "n_unique": 218,
+        "datetime_candidate": false,
+        "non_numeric_entries": 0
+      },
+      "ORDERID": {
+        "dtype_sample": "int64",
+        "non_null": 13224,
+        "nulls": 0,
+        "n_unique": 9043,
+        "datetime_candidate": false,
+        "non_numeric_entries": 0
+      },
+      "LINKORDERID": {
+        "dtype_sample": "int64",
+        "non_null": 13224,
+        "nulls": 0,
+        "n_unique": 7241,
+        "datetime_candidate": false,
+        "non_numeric_entries": 0
+      },
+      "ORDERCATEGORYNAME": {
+        "dtype_sample": "str",
+        "non_null": 13224,
+        "nulls": 0,
+        "n_unique": 15,
+        "datetime_candidate": false
+      },
+      "SECONDARYORDERCATEGORYNAME": {
+        "dtype_sample": "str",
+        "non_null": 9839,
+        "nulls": 3385,
+        "n_unique": 4,
+        "datetime_candidate": false
+      },
+      "ORDERCOMPONENTTYPEDESCRIPTION": {
+        "dtype_sample": "str",
+        "non_null": 13224,
+        "nulls": 0,
+        "n_unique": 3,
+        "datetime_candidate": false
+      },
+      "ORDERCATEGORYDESCRIPTION": {
+        "dtype_sample": "str",
+        "non_null": 13224,
+        "nulls": 0,
+        "n_unique": 5,
+        "datetime_candidate": false
+      },
+      "PATIENTWEIGHT": {
+        "dtype_sample": "float64",
+        "non_null": 13224,
+        "nulls": 0,
+        "n_unique": 72,
+        "datetime_candidate": false,
+        "non_numeric_entries": 0
+      },
+      "TOTALAMOUNT": {
+        "dtype_sample": "float64",
+        "non_null": 11784,
+        "nulls": 1440,
+        "n_unique": 127,
+        "datetime_candidate": false,
+        "non_numeric_entries": 0
+      },
+      "TOTALAMOUNTUOM": {
+        "dtype_sample": "str",
+        "non_null": 11791,
+        "nulls": 1433,
+        "n_unique": 1,
+        "datetime_candidate": false
+      },
+      "ISOPENBAG": {
+        "dtype_sample": "int64",
+        "non_null": 13224,
+        "nulls": 0,
+        "n_unique": 2,
+        "datetime_candidate": false,
+        "non_numeric_entries": 0
+      },
+      "CONTINUEINNEXTDEPT": {
+        "dtype_sample": "int64",
+        "non_null": 13224,
+        "nulls": 0,
+        "n_unique": 1,
+        "datetime_candidate": false,
+        "non_numeric_entries": 0
+      },
+      "CANCELREASON": {
+        "dtype_sample": "int64",
+        "non_null": 13224,
+        "nulls": 0,
+        "n_unique": 3,
+        "datetime_candidate": false,
+        "non_numeric_entries": 0
+      },
+      "STATUSDESCRIPTION": {
+        "dtype_sample": "str",
+        "non_null": 13224,
+        "nulls": 0,
+        "n_unique": 6,
+        "datetime_candidate": false
+      },
+      "COMMENTS_EDITEDBY": {
+        "dtype_sample": "str",
+        "non_null": 1265,
+        "nulls": 11959,
+        "n_unique": 2,
+        "datetime_candidate": false
+      },
+      "COMMENTS_CANCELEDBY": {
+        "dtype_sample": "str",
+        "non_null": 479,
+        "nulls": 12745,
+        "n_unique": 2,
+        "datetime_candidate": false
+      },
+      "COMMENTS_DATE": {
+        "dtype_sample": "str",
+        "non_null": 1744,
+        "nulls": 11480,
+        "n_unique": 908,
+        "datetime_candidate": true,
+        "datetime_parse_error": "TypeError(\"to_datetime() got an unexpected keyword argument 'infer_datetime_format'\")"
+      },
+      "ORIGINALAMOUNT": {
+        "dtype_sample": "float64",
+        "non_null": 13224,
+        "nulls": 0,
+        "n_unique": 2820,
+        "datetime_candidate": false,
+        "non_numeric_entries": 0
+      },
+      "ORIGINALRATE": {
+        "dtype_sample": "float64",
+        "non_null": 13224,
+        "nulls": 0,
+        "n_unique": 2010,
+        "datetime_candidate": false,
+        "non_numeric_entries": 0
+      }
+    }
+  },
+  "MICROBIOLOGYEVENTS.csv": {
+    "path": "MICROBIOLOGYEVENTS.csv",
+    "exists": true,
+    "size_bytes": 221959,
+    "size_human": "216.8KB",
+    "loaded_rows": 2003,
+    "sampled": false,
+    "n_columns": 16,
+    "columns": [
+      "ROW_ID",
+      "SUBJECT_ID",
+      "HADM_ID",
+      "CHARTDATE",
+      "CHARTTIME",
+      "SPEC_ITEMID",
+      "SPEC_TYPE_DESC",
+      "ORG_ITEMID",
+      "ORG_NAME",
+      "ISOLATE_NUM",
+      "AB_ITEMID",
+      "AB_NAME",
+      "DILUTION_TEXT",
+      "DILUTION_COMPARISON",
+      "DILUTION_VALUE",
+      "INTERPRETATION"
+    ],
+    "columns_summary": {
+      "ROW_ID": {
+        "dtype_sample": "int64",
+        "non_null": 2003,
+        "nulls": 0,
+        "n_unique": 2003,
+        "datetime_candidate": false,
+        "non_numeric_entries": 0,
+        "id_non_integer": 0,
+        "id_na_in_sample": 0
+      },
+      "SUBJECT_ID": {
+        "dtype_sample": "int64",
+        "non_null": 2003,
+        "nulls": 0,
+        "n_unique": 91,
+        "datetime_candidate": false,
+        "non_numeric_entries": 0,
+        "id_non_integer": 0,
+        "id_na_in_sample": 0
+      },
+      "HADM_ID": {
+        "dtype_sample": "int64",
+        "non_null": 2003,
+        "nulls": 0,
+        "n_unique": 120,
+        "datetime_candidate": false,
+        "non_numeric_entries": 0,
+        "id_non_integer": 0,
+        "id_na_in_sample": 0
+      },
+      "CHARTDATE": {
+        "dtype_sample": "str",
+        "non_null": 2003,
+        "nulls": 0,
+        "n_unique": 458,
+        "datetime_candidate": true,
+        "datetime_parse_error": "TypeError(\"to_datetime() got an unexpected keyword argument 'infer_datetime_format'\")"
+      },
+      "CHARTTIME": {
+        "dtype_sample": "str",
+        "non_null": 1912,
+        "nulls": 91,
+        "n_unique": 842,
+        "datetime_candidate": true,
+        "datetime_parse_error": "TypeError(\"to_datetime() got an unexpected keyword argument 'infer_datetime_format'\")"
+      },
+      "SPEC_ITEMID": {
+        "dtype_sample": "int64",
+        "non_null": 2003,
+        "nulls": 0,
+        "n_unique": 38,
+        "datetime_candidate": false,
+        "non_numeric_entries": 0
+      },
+      "SPEC_TYPE_DESC": {
+        "dtype_sample": "str",
+        "non_null": 2003,
+        "nulls": 0,
+        "n_unique": 34,
+        "datetime_candidate": false
+      },
+      "ORG_ITEMID": {
+        "dtype_sample": "float64",
+        "non_null": 1137,
+        "nulls": 866,
+        "n_unique": 46,
+        "datetime_candidate": false,
+        "non_numeric_entries": 0
+      },
+      "ORG_NAME": {
+        "dtype_sample": "str",
+        "non_null": 1137,
+        "nulls": 866,
+        "n_unique": 46,
+        "datetime_candidate": false
+      },
+      "ISOLATE_NUM": {
+        "dtype_sample": "float64",
+        "non_null": 1137,
+        "nulls": 866,
+        "n_unique": 4,
+        "datetime_candidate": false,
+        "non_numeric_entries": 0
+      },
+      "AB_ITEMID": {
+        "dtype_sample": "float64",
+        "non_null": 971,
+        "nulls": 1032,
+        "n_unique": 28,
+        "datetime_candidate": false,
+        "non_numeric_entries": 0
+      },
+      "AB_NAME": {
+        "dtype_sample": "str",
+        "non_null": 971,
+        "nulls": 1032,
+        "n_unique": 28,
+        "datetime_candidate": false
+      },
+      "DILUTION_TEXT": {
+        "dtype_sample": "str",
+        "non_null": 939,
+        "nulls": 1064,
+        "n_unique": 29,
+        "datetime_candidate": false
+      },
+      "DILUTION_COMPARISON": {
+        "dtype_sample": "str",
+        "non_null": 938,
+        "nulls": 1065,
+        "n_unique": 3,
+        "datetime_candidate": false
+      },
+      "DILUTION_VALUE": {
+        "dtype_sample": "float64",
+        "non_null": 938,
+        "nulls": 1065,
+        "n_unique": 11,
+        "datetime_candidate": false,
+        "non_numeric_entries": 0
+      },
+      "INTERPRETATION": {
+        "dtype_sample": "str",
+        "non_null": 971,
+        "nulls": 1032,
+        "n_unique": 3,
+        "datetime_candidate": false
+      }
+    }
+  },
+  "NOTEEVENTS.csv": {
+    "path": "NOTEEVENTS.csv",
+    "exists": true,
+    "size_bytes": 95,
+    "size_human": "95.0B",
+    "loaded_rows": 0,
+    "sampled": false,
+    "n_columns": 11,
+    "columns": [
+      "ROW_ID",
+      "SUBJECT_ID",
+      "HADM_ID",
+      "CHARTDATE",
+      "CHARTTIME",
+      "STORETIME",
+      "CATEGORY",
+      "DESCRIPTION",
+      "CGID",
+      "ISERROR",
+      "TEXT"
+    ],
+    "columns_summary": {
+      "ROW_ID": {
+        "dtype_sample": "object",
+        "non_null": 0,
+        "nulls": 0,
+        "n_unique": 0,
+        "datetime_candidate": false,
+        "non_numeric_entries": 0,
+        "id_non_integer": 0,
+        "id_na_in_sample": 0
+      },
+      "SUBJECT_ID": {
+        "dtype_sample": "object",
+        "non_null": 0,
+        "nulls": 0,
+        "n_unique": 0,
+        "datetime_candidate": false,
+        "non_numeric_entries": 0,
+        "id_non_integer": 0,
+        "id_na_in_sample": 0
+      },
+      "HADM_ID": {
+        "dtype_sample": "object",
+        "non_null": 0,
+        "nulls": 0,
+        "n_unique": 0,
+        "datetime_candidate": false,
+        "non_numeric_entries": 0,
+        "id_non_integer": 0,
+        "id_na_in_sample": 0
+      },
+      "CHARTDATE": {
+        "dtype_sample": "object",
+        "non_null": 0,
+        "nulls": 0,
+        "n_unique": 0,
+        "datetime_candidate": true,
+        "datetime_parse_error": "TypeError(\"to_datetime() got an unexpected keyword argument 'infer_datetime_format'\")",
+        "non_numeric_entries": 0
+      },
+      "CHARTTIME": {
+        "dtype_sample": "object",
+        "non_null": 0,
+        "nulls": 0,
+        "n_unique": 0,
+        "datetime_candidate": true,
+        "datetime_parse_error": "TypeError(\"to_datetime() got an unexpected keyword argument 'infer_datetime_format'\")",
+        "non_numeric_entries": 0
+      },
+      "STORETIME": {
+        "dtype_sample": "object",
+        "non_null": 0,
+        "nulls": 0,
+        "n_unique": 0,
+        "datetime_candidate": true,
+        "datetime_parse_error": "TypeError(\"to_datetime() got an unexpected keyword argument 'infer_datetime_format'\")",
+        "non_numeric_entries": 0
+      },
+      "CATEGORY": {
+        "dtype_sample": "object",
+        "non_null": 0,
+        "nulls": 0,
+        "n_unique": 0,
+        "datetime_candidate": false,
+        "non_numeric_entries": 0
+      },
+      "DESCRIPTION": {
+        "dtype_sample": "object",
+        "non_null": 0,
+        "nulls": 0,
+        "n_unique": 0,
+        "datetime_candidate": false,
+        "non_numeric_entries": 0
+      },
+      "CGID": {
+        "dtype_sample": "object",
+        "non_null": 0,
+        "nulls": 0,
+        "n_unique": 0,
+        "datetime_candidate": false,
+        "non_numeric_entries": 0
+      },
+      "ISERROR": {
+        "dtype_sample": "object",
+        "non_null": 0,
+        "nulls": 0,
+        "n_unique": 0,
+        "datetime_candidate": false,
+        "non_numeric_entries": 0
+      },
+      "TEXT": {
+        "dtype_sample": "object",
+        "non_null": 0,
+        "nulls": 0,
+        "n_unique": 0,
+        "datetime_candidate": false,
+        "non_numeric_entries": 0
+      }
+    }
+  },
+  "OUTPUTEVENTS.csv": {
+    "path": "OUTPUTEVENTS.csv",
+    "exists": true,
+    "size_bytes": 1014449,
+    "size_human": "990.7KB",
+    "loaded_rows": 11320,
+    "sampled": false,
+    "n_columns": 13,
+    "columns": [
+      "ROW_ID",
+      "SUBJECT_ID",
+      "HADM_ID",
+      "ICUSTAY_ID",
+      "CHARTTIME",
+      "ITEMID",
+      "VALUE",
+      "VALUEUOM",
+      "STORETIME",
+      "CGID",
+      "STOPPED",
+      "NEWBOTTLE",
+      "ISERROR"
+    ],
+    "columns_summary": {
+      "ROW_ID": {
+        "dtype_sample": "int64",
+        "non_null": 11320,
+        "nulls": 0,
+        "n_unique": 11320,
+        "datetime_candidate": false,
+        "non_numeric_entries": 0,
+        "id_non_integer": 0,
+        "id_na_in_sample": 0
+      },
+      "SUBJECT_ID": {
+        "dtype_sample": "int64",
+        "non_null": 11320,
+        "nulls": 0,
+        "n_unique": 97,
+        "datetime_candidate": false,
+        "non_numeric_entries": 0,
+        "id_non_integer": 0,
+        "id_na_in_sample": 0
+      },
+      "HADM_ID": {
+        "dtype_sample": "int64",
+        "non_null": 11320,
+        "nulls": 0,
+        "n_unique": 123,
+        "datetime_candidate": false,
+        "non_numeric_entries": 0,
+        "id_non_integer": 0,
+        "id_na_in_sample": 0
+      },
+      "ICUSTAY_ID": {
+        "dtype_sample": "float64",
+        "non_null": 11319,
+        "nulls": 1,
+        "n_unique": 130,
+        "datetime_candidate": false,
+        "non_numeric_entries": 0,
+        "id_non_integer": 0,
+        "id_na_in_sample": 1
+      },
+      "CHARTTIME": {
+        "dtype_sample": "str",
+        "non_null": 11320,
+        "nulls": 0,
+        "n_unique": 9584,
+        "datetime_candidate": true,
+        "datetime_parse_error": "TypeError(\"to_datetime() got an unexpected keyword argument 'infer_datetime_format'\")"
+      },
+      "ITEMID": {
+        "dtype_sample": "int64",
+        "non_null": 11320,
+        "nulls": 0,
+        "n_unique": 62,
+        "datetime_candidate": false,
+        "non_numeric_entries": 0
+      },
+      "VALUE": {
+        "dtype_sample": "float64",
+        "non_null": 11160,
+        "nulls": 160,
+        "n_unique": 336,
+        "datetime_candidate": false,
+        "non_numeric_entries": 0
+      },
+      "VALUEUOM": {
+        "dtype_sample": "str",
+        "non_null": 11273,
+        "nulls": 47,
+        "n_unique": 2,
+        "datetime_candidate": false
+      },
+      "STORETIME": {
+        "dtype_sample": "str",
+        "non_null": 11320,
+        "nulls": 0,
+        "n_unique": 8807,
+        "datetime_candidate": true,
+        "datetime_parse_error": "TypeError(\"to_datetime() got an unexpected keyword argument 'infer_datetime_format'\")"
+      },
+      "CGID": {
+        "dtype_sample": "int64",
+        "non_null": 11320,
+        "nulls": 0,
+        "n_unique": 389,
+        "datetime_candidate": false,
+        "non_numeric_entries": 0
+      },
+      "STOPPED": {
+        "dtype_sample": "float64",
+        "non_null": 0,
+        "nulls": 11320,
+        "n_unique": 0,
+        "datetime_candidate": false,
+        "non_numeric_entries": 0
+      },
+      "NEWBOTTLE": {
+        "dtype_sample": "float64",
+        "non_null": 0,
+        "nulls": 11320,
+        "n_unique": 0,
+        "datetime_candidate": false,
+        "non_numeric_entries": 0
+      },
+      "ISERROR": {
+        "dtype_sample": "float64",
+        "non_null": 0,
+        "nulls": 11320,
+        "n_unique": 0,
+        "datetime_candidate": false,
+        "non_numeric_entries": 0
+      }
+    }
+  },
+  "PATIENTS.csv": {
+    "path": "PATIENTS.csv",
+    "exists": true,
+    "size_bytes": 8605,
+    "size_human": "8.4KB",
+    "loaded_rows": 100,
+    "sampled": false,
+    "n_columns": 8,
+    "columns": [
+      "ROW_ID",
+      "SUBJECT_ID",
+      "GENDER",
+      "DOB",
+      "DOD",
+      "DOD_HOSP",
+      "DOD_SSN",
+      "EXPIRE_FLAG"
+    ],
+    "columns_summary": {
+      "ROW_ID": {
+        "dtype_sample": "int64",
+        "non_null": 100,
+        "nulls": 0,
+        "n_unique": 100,
+        "datetime_candidate": false,
+        "non_numeric_entries": 0,
+        "id_non_integer": 0,
+        "id_na_in_sample": 0
+      },
+      "SUBJECT_ID": {
+        "dtype_sample": "int64",
+        "non_null": 100,
+        "nulls": 0,
+        "n_unique": 100,
+        "datetime_candidate": false,
+        "non_numeric_entries": 0,
+        "id_non_integer": 0,
+        "id_na_in_sample": 0
+      },
+      "GENDER": {
+        "dtype_sample": "str",
+        "non_null": 100,
+        "nulls": 0,
+        "n_unique": 2,
+        "datetime_candidate": false
+      },
+      "DOB": {
+        "dtype_sample": "str",
+        "non_null": 100,
+        "nulls": 0,
+        "n_unique": 99,
+        "datetime_candidate": false
+      },
+      "DOD": {
+        "dtype_sample": "str",
+        "non_null": 100,
+        "nulls": 0,
+        "n_unique": 100,
+        "datetime_candidate": false
+      },
+      "DOD_HOSP": {
+        "dtype_sample": "str",
+        "non_null": 70,
+        "nulls": 30,
+        "n_unique": 70,
+        "datetime_candidate": false
+      },
+      "DOD_SSN": {
+        "dtype_sample": "str",
+        "non_null": 77,
+        "nulls": 23,
+        "n_unique": 77,
+        "datetime_candidate": false
+      },
+      "EXPIRE_FLAG": {
+        "dtype_sample": "int64",
+        "non_null": 100,
+        "nulls": 0,
+        "n_unique": 1,
+        "datetime_candidate": false,
+        "non_numeric_entries": 0
+      }
+    }
+  },
+  "PRESCRIPTIONS.csv": {
+    "path": "PRESCRIPTIONS.csv",
+    "exists": true,
+    "size_bytes": 1667845,
+    "size_human": "1.6MB",
+    "loaded_rows": 10398,
+    "sampled": false,
+    "n_columns": 19,
+    "columns": [
+      "ROW_ID",
+      "SUBJECT_ID",
+      "HADM_ID",
+      "ICUSTAY_ID",
+      "STARTDATE",
+      "ENDDATE",
+      "DRUG_TYPE",
+      "DRUG",
+      "DRUG_NAME_POE",
+      "DRUG_NAME_GENERIC",
+      "FORMULARY_DRUG_CD",
+      "GSN",
+      "NDC",
+      "PROD_STRENGTH",
+      "DOSE_VAL_RX",
+      "DOSE_UNIT_RX",
+      "FORM_VAL_DISP",
+      "FORM_UNIT_DISP",
+      "ROUTE"
+    ],
+    "columns_summary": {
+      "ROW_ID": {
+        "dtype_sample": "int64",
+        "non_null": 10398,
+        "nulls": 0,
+        "n_unique": 10398,
+        "datetime_candidate": false,
+        "non_numeric_entries": 0,
+        "id_non_integer": 0,
+        "id_na_in_sample": 0
+      },
+      "SUBJECT_ID": {
+        "dtype_sample": "int64",
+        "non_null": 10398,
+        "nulls": 0,
+        "n_unique": 94,
+        "datetime_candidate": false,
+        "non_numeric_entries": 0,
+        "id_non_integer": 0,
+        "id_na_in_sample": 0
+      },
+      "HADM_ID": {
+        "dtype_sample": "int64",
+        "non_null": 10398,
+        "nulls": 0,
+        "n_unique": 122,
+        "datetime_candidate": false,
+        "non_numeric_entries": 0,
+        "id_non_integer": 0,
+        "id_na_in_sample": 0
+      },
+      "ICUSTAY_ID": {
+        "dtype_sample": "float64",
+        "non_null": 7046,
+        "nulls": 3352,
+        "n_unique": 126,
+        "datetime_candidate": false,
+        "non_numeric_entries": 0,
+        "id_non_integer": 0,
+        "id_na_in_sample": 3352
+      },
+      "STARTDATE": {
+        "dtype_sample": "str",
+        "non_null": 10398,
+        "nulls": 0,
+        "n_unique": 1048,
+        "datetime_candidate": true,
+        "datetime_parse_error": "TypeError(\"to_datetime() got an unexpected keyword argument 'infer_datetime_format'\")"
+      },
+      "ENDDATE": {
+        "dtype_sample": "str",
+        "non_null": 10397,
+        "nulls": 1,
+        "n_unique": 1054,
+        "datetime_candidate": true,
+        "datetime_parse_error": "TypeError(\"to_datetime() got an unexpected keyword argument 'infer_datetime_format'\")"
+      },
+      "DRUG_TYPE": {
+        "dtype_sample": "str",
+        "non_null": 10398,
+        "nulls": 0,
+        "n_unique": 3,
+        "datetime_candidate": false
+      },
+      "DRUG": {
+        "dtype_sample": "str",
+        "non_null": 10398,
+        "nulls": 0,
+        "n_unique": 592,
+        "datetime_candidate": false
+      },
+      "DRUG_NAME_POE": {
+        "dtype_sample": "str",
+        "non_null": 5766,
+        "nulls": 4632,
+        "n_unique": 448,
+        "datetime_candidate": false
+      },
+      "DRUG_NAME_GENERIC": {
+        "dtype_sample": "str",
+        "non_null": 5772,
+        "nulls": 4626,
+        "n_unique": 473,
+        "datetime_candidate": false
+      },
+      "FORMULARY_DRUG_CD": {
+        "dtype_sample": "str",
+        "non_null": 10397,
+        "nulls": 1,
+        "n_unique": 823,
+        "datetime_candidate": false
+      },
+      "GSN": {
+        "dtype_sample": "float64",
+        "non_null": 9122,
+        "nulls": 1276,
+        "n_unique": 724,
+        "datetime_candidate": false,
+        "non_numeric_entries": 0
+      },
+      "NDC": {
+        "dtype_sample": "float64",
+        "non_null": 10397,
+        "nulls": 1,
+        "n_unique": 996,
+        "datetime_candidate": false,
+        "non_numeric_entries": 0
+      },
+      "PROD_STRENGTH": {
+        "dtype_sample": "str",
+        "non_null": 10398,
+        "nulls": 0,
+        "n_unique": 766,
+        "datetime_candidate": false
+      },
+      "DOSE_VAL_RX": {
+        "dtype_sample": "str",
+        "non_null": 10398,
+        "nulls": 0,
+        "n_unique": 222,
+        "datetime_candidate": false
+      },
+      "DOSE_UNIT_RX": {
+        "dtype_sample": "str",
+        "non_null": 10398,
+        "nulls": 0,
+        "n_unique": 35,
+        "datetime_candidate": false
+      },
+      "FORM_VAL_DISP": {
+        "dtype_sample": "str",
+        "non_null": 10398,
+        "nulls": 0,
+        "n_unique": 229,
+        "datetime_candidate": false
+      },
+      "FORM_UNIT_DISP": {
+        "dtype_sample": "str",
+        "non_null": 10397,
+        "nulls": 1,
+        "n_unique": 32,
+        "datetime_candidate": false
+      },
+      "ROUTE": {
+        "dtype_sample": "str",
+        "non_null": 10398,
+        "nulls": 0,
+        "n_unique": 37,
+        "datetime_candidate": false
+      }
+    }
+  },
+  "PROCEDUREEVENTS_MV.csv": {
+    "path": "PROCEDUREEVENTS_MV.csv",
+    "exists": true,
+    "size_bytes": 134284,
+    "size_human": "131.1KB",
+    "loaded_rows": 753,
+    "sampled": false,
+    "n_columns": 25,
+    "columns": [
+      "ROW_ID",
+      "SUBJECT_ID",
+      "HADM_ID",
+      "ICUSTAY_ID",
+      "STARTTIME",
+      "ENDTIME",
+      "ITEMID",
+      "VALUE",
+      "VALUEUOM",
+      "LOCATION",
+      "LOCATIONCATEGORY",
+      "STORETIME",
+      "CGID",
+      "ORDERID",
+      "LINKORDERID",
+      "ORDERCATEGORYNAME",
+      "SECONDARYORDERCATEGORYNAME",
+      "ORDERCATEGORYDESCRIPTION",
+      "ISOPENBAG",
+      "CONTINUEINNEXTDEPT",
+      "CANCELREASON",
+      "STATUSDESCRIPTION",
+      "COMMENTS_EDITEDBY",
+      "COMMENTS_CANCELEDBY",
+      "COMMENTS_DATE"
+    ],
+    "columns_summary": {
+      "ROW_ID": {
+        "dtype_sample": "int64",
+        "non_null": 753,
+        "nulls": 0,
+        "n_unique": 753,
+        "datetime_candidate": false,
+        "non_numeric_entries": 0,
+        "id_non_integer": 0,
+        "id_na_in_sample": 0
+      },
+      "SUBJECT_ID": {
+        "dtype_sample": "int64",
+        "non_null": 753,
+        "nulls": 0,
+        "n_unique": 50,
+        "datetime_candidate": false,
+        "non_numeric_entries": 0,
+        "id_non_integer": 0,
+        "id_na_in_sample": 0
+      },
+      "HADM_ID": {
+        "dtype_sample": "int64",
+        "non_null": 753,
+        "nulls": 0,
+        "n_unique": 70,
+        "datetime_candidate": false,
+        "non_numeric_entries": 0,
+        "id_non_integer": 0,
+        "id_na_in_sample": 0
+      },
+      "ICUSTAY_ID": {
+        "dtype_sample": "int64",
+        "non_null": 753,
+        "nulls": 0,
+        "n_unique": 75,
+        "datetime_candidate": false,
+        "non_numeric_entries": 0,
+        "id_non_integer": 0,
+        "id_na_in_sample": 0
+      },
+      "STARTTIME": {
+        "dtype_sample": "str",
+        "non_null": 753,
+        "nulls": 0,
+        "n_unique": 678,
+        "datetime_candidate": true,
+        "datetime_parse_error": "TypeError(\"to_datetime() got an unexpected keyword argument 'infer_datetime_format'\")"
+      },
+      "ENDTIME": {
+        "dtype_sample": "str",
+        "non_null": 753,
+        "nulls": 0,
+        "n_unique": 663,
+        "datetime_candidate": true,
+        "datetime_parse_error": "TypeError(\"to_datetime() got an unexpected keyword argument 'infer_datetime_format'\")"
+      },
+      "ITEMID": {
+        "dtype_sample": "int64",
+        "non_null": 753,
+        "nulls": 0,
+        "n_unique": 64,
+        "datetime_candidate": false,
+        "non_numeric_entries": 0
+      },
+      "VALUE": {
+        "dtype_sample": "int64",
+        "non_null": 753,
+        "nulls": 0,
+        "n_unique": 280,
+        "datetime_candidate": false,
+        "non_numeric_entries": 0
+      },
+      "VALUEUOM": {
+        "dtype_sample": "str",
+        "non_null": 319,
+        "nulls": 434,
+        "n_unique": 1,
+        "datetime_candidate": false
+      },
+      "LOCATION": {
+        "dtype_sample": "str",
+        "non_null": 118,
+        "nulls": 635,
+        "n_unique": 30,
+        "datetime_candidate": false
+      },
+      "LOCATIONCATEGORY": {
+        "dtype_sample": "str",
+        "non_null": 118,
+        "nulls": 635,
+        "n_unique": 4,
+        "datetime_candidate": false
+      },
+      "STORETIME": {
+        "dtype_sample": "str",
+        "non_null": 753,
+        "nulls": 0,
+        "n_unique": 613,
+        "datetime_candidate": true,
+        "datetime_parse_error": "TypeError(\"to_datetime() got an unexpected keyword argument 'infer_datetime_format'\")"
+      },
+      "CGID": {
+        "dtype_sample": "int64",
+        "non_null": 753,
+        "nulls": 0,
+        "n_unique": 194,
+        "datetime_candidate": false,
+        "non_numeric_entries": 0
+      },
+      "ORDERID": {
+        "dtype_sample": "int64",
+        "non_null": 753,
+        "nulls": 0,
+        "n_unique": 753,
+        "datetime_candidate": false,
+        "non_numeric_entries": 0
+      },
+      "LINKORDERID": {
+        "dtype_sample": "int64",
+        "non_null": 753,
+        "nulls": 0,
+        "n_unique": 749,
+        "datetime_candidate": false,
+        "non_numeric_entries": 0
+      },
+      "ORDERCATEGORYNAME": {
+        "dtype_sample": "str",
+        "non_null": 753,
+        "nulls": 0,
+        "n_unique": 11,
+        "datetime_candidate": false
+      },
+      "SECONDARYORDERCATEGORYNAME": {
+        "dtype_sample": "float64",
+        "non_null": 0,
+        "nulls": 753,
+        "n_unique": 0,
+        "datetime_candidate": false,
+        "non_numeric_entries": 0
+      },
+      "ORDERCATEGORYDESCRIPTION": {
+        "dtype_sample": "str",
+        "non_null": 753,
+        "nulls": 0,
+        "n_unique": 2,
+        "datetime_candidate": false
+      },
+      "ISOPENBAG": {
+        "dtype_sample": "int64",
+        "non_null": 753,
+        "nulls": 0,
+        "n_unique": 2,
+        "datetime_candidate": false,
+        "non_numeric_entries": 0
+      },
+      "CONTINUEINNEXTDEPT": {
+        "dtype_sample": "int64",
+        "non_null": 753,
+        "nulls": 0,
+        "n_unique": 1,
+        "datetime_candidate": false,
+        "non_numeric_entries": 0
+      },
+      "CANCELREASON": {
+        "dtype_sample": "int64",
+        "non_null": 753,
+        "nulls": 0,
+        "n_unique": 3,
+        "datetime_candidate": false,
+        "non_numeric_entries": 0
+      },
+      "STATUSDESCRIPTION": {
+        "dtype_sample": "str",
+        "non_null": 753,
+        "nulls": 0,
+        "n_unique": 4,
+        "datetime_candidate": false
+      },
+      "COMMENTS_EDITEDBY": {
+        "dtype_sample": "str",
+        "non_null": 4,
+        "nulls": 749,
+        "n_unique": 1,
+        "datetime_candidate": false
+      },
+      "COMMENTS_CANCELEDBY": {
+        "dtype_sample": "str",
+        "non_null": 19,
+        "nulls": 734,
+        "n_unique": 2,
+        "datetime_candidate": false
+      },
+      "COMMENTS_DATE": {
+        "dtype_sample": "str",
+        "non_null": 23,
+        "nulls": 730,
+        "n_unique": 21,
+        "datetime_candidate": true,
+        "datetime_parse_error": "TypeError(\"to_datetime() got an unexpected keyword argument 'infer_datetime_format'\")"
+      }
+    }
+  },
+  "PROCEDURES_ICD.csv": {
+    "path": "PROCEDURES_ICD.csv",
+    "exists": true,
+    "size_bytes": 13512,
+    "size_human": "13.2KB",
+    "loaded_rows": 506,
+    "sampled": false,
+    "n_columns": 5,
+    "columns": [
+      "ROW_ID",
+      "SUBJECT_ID",
+      "HADM_ID",
+      "SEQ_NUM",
+      "ICD9_CODE"
+    ],
+    "columns_summary": {
+      "ROW_ID": {
+        "dtype_sample": "int64",
+        "non_null": 506,
+        "nulls": 0,
+        "n_unique": 506,
+        "datetime_candidate": false,
+        "non_numeric_entries": 0,
+        "id_non_integer": 0,
+        "id_na_in_sample": 0
+      },
+      "SUBJECT_ID": {
+        "dtype_sample": "int64",
+        "non_null": 506,
+        "nulls": 0,
+        "n_unique": 88,
+        "datetime_candidate": false,
+        "non_numeric_entries": 0,
+        "id_non_integer": 0,
+        "id_na_in_sample": 0
+      },
+      "HADM_ID": {
+        "dtype_sample": "int64",
+        "non_null": 506,
+        "nulls": 0,
+        "n_unique": 113,
+        "datetime_candidate": false,
+        "non_numeric_entries": 0,
+        "id_non_integer": 0,
+        "id_na_in_sample": 0
+      },
+      "SEQ_NUM": {
+        "dtype_sample": "int64",
+        "non_null": 506,
+        "nulls": 0,
+        "n_unique": 22,
+        "datetime_candidate": false,
+        "non_numeric_entries": 0
+      },
+      "ICD9_CODE": {
+        "dtype_sample": "int64",
+        "non_null": 506,
+        "nulls": 0,
+        "n_unique": 164,
+        "datetime_candidate": false,
+        "non_numeric_entries": 0
+      }
+    }
+  },
+  "SERVICES.csv": {
+    "path": "SERVICES.csv",
+    "exists": true,
+    "size_bytes": 7464,
+    "size_human": "7.3KB",
+    "loaded_rows": 163,
+    "sampled": false,
+    "n_columns": 6,
+    "columns": [
+      "ROW_ID",
+      "SUBJECT_ID",
+      "HADM_ID",
+      "TRANSFERTIME",
+      "PREV_SERVICE",
+      "CURR_SERVICE"
+    ],
+    "columns_summary": {
+      "ROW_ID": {
+        "dtype_sample": "int64",
+        "non_null": 163,
+        "nulls": 0,
+        "n_unique": 163,
+        "datetime_candidate": false,
+        "non_numeric_entries": 0,
+        "id_non_integer": 0,
+        "id_na_in_sample": 0
+      },
+      "SUBJECT_ID": {
+        "dtype_sample": "int64",
+        "non_null": 163,
+        "nulls": 0,
+        "n_unique": 100,
+        "datetime_candidate": false,
+        "non_numeric_entries": 0,
+        "id_non_integer": 0,
+        "id_na_in_sample": 0
+      },
+      "HADM_ID": {
+        "dtype_sample": "int64",
+        "non_null": 163,
+        "nulls": 0,
+        "n_unique": 129,
+        "datetime_candidate": false,
+        "non_numeric_entries": 0,
+        "id_non_integer": 0,
+        "id_na_in_sample": 0
+      },
+      "TRANSFERTIME": {
+        "dtype_sample": "str",
+        "non_null": 163,
+        "nulls": 0,
+        "n_unique": 163,
+        "datetime_candidate": true,
+        "datetime_parse_error": "TypeError(\"to_datetime() got an unexpected keyword argument 'infer_datetime_format'\")"
+      },
+      "PREV_SERVICE": {
+        "dtype_sample": "str",
+        "non_null": 34,
+        "nulls": 129,
+        "n_unique": 9,
+        "datetime_candidate": false
+      },
+      "CURR_SERVICE": {
+        "dtype_sample": "str",
+        "non_null": 163,
+        "nulls": 0,
+        "n_unique": 12,
+        "datetime_candidate": false
+      }
+    }
+  },
+  "TRANSFERS.csv": {
+    "path": "TRANSFERS.csv",
+    "exists": true,
+    "size_bytes": 47199,
+    "size_human": "46.1KB",
+    "loaded_rows": 524,
+    "sampled": false,
+    "n_columns": 13,
+    "columns": [
+      "ROW_ID",
+      "SUBJECT_ID",
+      "HADM_ID",
+      "ICUSTAY_ID",
+      "DBSOURCE",
+      "EVENTTYPE",
+      "PREV_CAREUNIT",
+      "CURR_CAREUNIT",
+      "PREV_WARDID",
+      "CURR_WARDID",
+      "INTIME",
+      "OUTTIME",
+      "LOS"
+    ],
+    "columns_summary": {
+      "ROW_ID": {
+        "dtype_sample": "int64",
+        "non_null": 524,
+        "nulls": 0,
+        "n_unique": 524,
+        "datetime_candidate": false,
+        "non_numeric_entries": 0,
+        "id_non_integer": 0,
+        "id_na_in_sample": 0
+      },
+      "SUBJECT_ID": {
+        "dtype_sample": "int64",
+        "non_null": 524,
+        "nulls": 0,
+        "n_unique": 100,
+        "datetime_candidate": false,
+        "non_numeric_entries": 0,
+        "id_non_integer": 0,
+        "id_na_in_sample": 0
+      },
+      "HADM_ID": {
+        "dtype_sample": "int64",
+        "non_null": 524,
+        "nulls": 0,
+        "n_unique": 129,
+        "datetime_candidate": false,
+        "non_numeric_entries": 0,
+        "id_non_integer": 0,
+        "id_na_in_sample": 0
+      },
+      "ICUSTAY_ID": {
+        "dtype_sample": "float64",
+        "non_null": 167,
+        "nulls": 357,
+        "n_unique": 136,
+        "datetime_candidate": false,
+        "non_numeric_entries": 0,
+        "id_non_integer": 0,
+        "id_na_in_sample": 357
+      },
+      "DBSOURCE": {
+        "dtype_sample": "str",
+        "non_null": 524,
+        "nulls": 0,
+        "n_unique": 2,
+        "datetime_candidate": false
+      },
+      "EVENTTYPE": {
+        "dtype_sample": "str",
+        "non_null": 524,
+        "nulls": 0,
+        "n_unique": 3,
+        "datetime_candidate": false
+      },
+      "PREV_CAREUNIT": {
+        "dtype_sample": "str",
+        "non_null": 167,
+        "nulls": 357,
+        "n_unique": 5,
+        "datetime_candidate": false
+      },
+      "CURR_CAREUNIT": {
+        "dtype_sample": "str",
+        "non_null": 167,
+        "nulls": 357,
+        "n_unique": 5,
+        "datetime_candidate": false
+      },
+      "PREV_WARDID": {
+        "dtype_sample": "float64",
+        "non_null": 395,
+        "nulls": 129,
+        "n_unique": 28,
+        "datetime_candidate": false,
+        "non_numeric_entries": 0
+      },
+      "CURR_WARDID": {
+        "dtype_sample": "float64",
+        "non_null": 395,
+        "nulls": 129,
+        "n_unique": 28,
+        "datetime_candidate": false,
+        "non_numeric_entries": 0
+      },
+      "INTIME": {
+        "dtype_sample": "str",
+        "non_null": 524,
+        "nulls": 0,
+        "n_unique": 524,
+        "datetime_candidate": true,
+        "datetime_parse_error": "TypeError(\"to_datetime() got an unexpected keyword argument 'infer_datetime_format'\")"
+      },
+      "OUTTIME": {
+        "dtype_sample": "str",
+        "non_null": 395,
+        "nulls": 129,
+        "n_unique": 395,
+        "datetime_candidate": true,
+        "datetime_parse_error": "TypeError(\"to_datetime() got an unexpected keyword argument 'infer_datetime_format'\")"
+      },
+      "LOS": {
+        "dtype_sample": "float64",
+        "non_null": 395,
+        "nulls": 129,
+        "n_unique": 380,
+        "datetime_candidate": false,
+        "non_numeric_entries": 0
+      }
+    }
+  }
+}

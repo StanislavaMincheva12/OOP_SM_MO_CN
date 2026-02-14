@@ -1,0 +1,3 @@
+,organism,org_itemid,ward_id,positives,status,threshold
+0,Escherichia coli,220001,101,11,WARD_ALERT,5
+1,Enterococcus faecalis,220034,101,6,WARD_ALERT,5
