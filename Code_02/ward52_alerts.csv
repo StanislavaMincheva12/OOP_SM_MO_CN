@@ -1,0 +1,2 @@
+alert_id,ward_id,org_name,org_id,window_days,threshold,patients_in_window,alert_day
+1,52,CLOSTRIDIUM DIFFICILE,80139,3,1,1,2105-05-30
