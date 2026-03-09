@@ -1,0 +1,63 @@
+Patients table:     SUBJECT_ID  ... EXPIRE_FLAG
+0        10006  ...           1
+1        10011  ...           1
+2        10013  ...           1
+3        10017  ...           1
+4        10019  ...           1
+..         ...  ...         ...
+95       44083  ...           1
+96       44154  ...           1
+97       44212  ...           1
+98       44222  ...           1
+99       44228  ...           1
+
+[100 rows x 7 columns]
+Organism names with ORG_ITEMID:
+('STAPHYLOCOCCUS, COAGULASE NEGATIVE', 80155.0)
+('YEAST', 80075.0)
+('GRAM POSITIVE COCCUS(COCCI)', 80055.0)
+('ENTEROCOCCUS FAECALIS', 80172.0)
+('STREPTOCOCCUS SPECIES', 80207.0)
+('ENTEROCOCCUS SP.', 80053.0)
+('ENTEROBACTERIACEAE', 80218.0)
+('ESCHERICHIA COLI', 80002.0)
+('SERRATIA MARCESCENS', 80014.0)
+('BETA STREPTOCOCCUS GROUP B', 80045.0)
+Processing ward 52 (size: 10)
+  Found 277 positive cultures
+Processing ward 12 (size: 20)
+  Found 10 positive cultures
+Processing ward 50 (size: 10)
+  Found 147 positive cultures
+Processing ward 57 (size: 5)
+  Found 220 positive cultures
+Processing ward 7 (size: 20)
+  Found 166 positive cultures
+Processing ward 23 (size: 15)
+  Found 160 positive cultures
+Processing ward 15 (size: 10)
+  Found 42 positive cultures
+Processing ward 33 (size: 20)
+  Found 174 positive cultures
+Processing ward 14 (size: 10)
+  Found 64 positive cultures
+Generated 1118 episodes across 9 wards
+ward_id
+52    152
+57    133
+23    102
+50    102
+7      39
+14     25
+15     16
+33     13
+12      1
+Name: alert, dtype: int64
+
+Alerts table head:
+ ALERT_ID  WARD_ID ORG_ID                        ORG_NAME  NUM_PATIENTS  CULTURE_EVENTS START_TIME            END_TIME  SEVERITY  THRESHOLD  WINDOW_DAYS
+        0       12   None           CLOSTRIDIUM DIFFICILE             1               1 2185-04-23 2185-04-16 00:44:18        30          1            3
+        1       23   None           CLOSTRIDIUM DIFFICILE             1               1 2180-03-18 2180-03-04 21:20:36        30          1            3
+        2       23   None           CLOSTRIDIUM DIFFICILE             2               1 2180-03-18 2180-03-04 21:20:36        30          1            3
+        3       52   None           CLOSTRIDIUM DIFFICILE             1               1 2105-05-30 2105-06-11 06:57:03        30          1            3
+        4        7   None ACINETOBACTER BAUMANNII COMPLEX             1               1 2166-02-14 2166-02-26 02:31:45        30          1            3
