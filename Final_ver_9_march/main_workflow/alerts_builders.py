@@ -121,7 +121,7 @@ if __name__ == "__main__":
         from main_workflow.data_preparation import prepare_microbiology_data
         from microbiology.pathogens import load_default_pathogens
 
-        db_path = "../OOP_database.db"
+        db_path = "Final_ver_9_march/OOP_database.db"
 
         tables = [
             "PATIENTS",
@@ -140,14 +140,10 @@ if __name__ == "__main__":
         data = load_tables(db_path, tables)
         repo = DataRepository.from_dict(data)
 
-        print('Patients table:', repo.patients)
 
         # Output organism names with ORG_ITEMID from data
         organism_df = repo.microbiologyevents[['ORG_NAME', 'ORG_ITEMID']].drop_duplicates().dropna()
         organism_items = list(zip(organism_df['ORG_NAME'], organism_df['ORG_ITEMID']))
-        print("Organism names with ORG_ITEMID:")
-        for org_name, org_id in organism_items[:10]:  # Sample first 10
-            print(f"('{org_name}', {org_id})")
 
         # Load pathogen registry
         registry = load_default_pathogens()
@@ -179,8 +175,9 @@ if __name__ == "__main__":
             })
 
         alerts_df = pd.DataFrame(alerts_data)
-        print("\nAlerts table head:")
-        print(alerts_df.head().to_string(index=False))
+        alerts_df = alerts_df.sort_values(by='START_TIME')
+        print("\nAlerts table:")
+        print(alerts_df.to_string(index=False))
 
     # Restore stdout
     sys.stdout = sys.__stdout__

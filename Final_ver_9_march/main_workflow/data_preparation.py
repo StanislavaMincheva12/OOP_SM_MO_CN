@@ -7,6 +7,8 @@ import numpy as np
 from datetime import timedelta
 from collections import defaultdict
 
+
+
 def prepare_microbiology_data(data_repo):
     """
     Prepare microbiology data for alert generation.
@@ -95,5 +97,43 @@ def prepare_microbiology_data(data_repo):
     # Ensure datetime consistency
     ward_pos_all["OUTTIME"] = pd.to_datetime(ward_pos_all["OUTTIME"], errors="coerce")
     ward_pos_all["CHARTDATE"] = pd.to_datetime(ward_pos_all["CHARTDATE"], errors="coerce")
+
+    
+    start_date = pd.to_datetime("2026-03-11")
+
+    # Get unique patients
+    patients = (
+        ward_pos_all[["SUBJECT_ID"]]
+        .drop_duplicates()
+        .sort_values("SUBJECT_ID")
+        .reset_index(drop=True)
+    )
+
+    # Generate sequential CHARTDATE
+    patients["CHARTDATE"] = [
+        start_date + timedelta(days=i)
+        for i in range(len(patients))
+    ]
+
+    # OUTDATE = CHARTDATE + 3 days
+    patients["OUTDATE"] = patients["CHARTDATE"] + timedelta(days=3)
+
+    # OUTTIME = OUTDATE at 12:00
+    patients["OUTTIME"] = patients["OUTDATE"] + pd.Timedelta(hours=12)
+
+    # Merge back to main table
+    ward_pos_all = ward_pos_all.merge(
+        patients[["SUBJECT_ID", "CHARTDATE", "OUTTIME"]],
+        on="SUBJECT_ID",
+        how="left",
+        suffixes=("", "_synthetic")
+    )
+
+    # Replace old values
+    ward_pos_all["CHARTDATE"] = ward_pos_all["CHARTDATE_synthetic"]
+    ward_pos_all["OUTTIME"] = ward_pos_all["OUTTIME_synthetic"]
+
+    # Cleanup
+    ward_pos_all = ward_pos_all.drop(columns=["CHARTDATE_synthetic", "OUTTIME_synthetic"])
 
     return ward_pos_all

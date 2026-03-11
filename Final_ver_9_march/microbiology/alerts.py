@@ -40,7 +40,7 @@ class MicrobiologyAlert(Alert):
 
     def describe(self) -> str:
         thresh = self.pathogen.get_ward_threshold(self.ward_size)
-        status = "⚠ ALERT" if self.should_raise() else "OK"
+        status = "ALERT" if self.should_raise() else "OK"
         return (
             f"[{status}][{self.alert_type}] Ward {self.ward_id} "
             f"({self.ward_size} beds) | {self.pathogen.org_name} | "
