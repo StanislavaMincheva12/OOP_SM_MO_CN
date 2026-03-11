@@ -1,10 +1,6 @@
-import sys
-import os
-sys.path.append(os.path.join(os.path.dirname(__file__), '..'))
-
 import pandas as pd
-from microbiology.pathogens import PathogenRegistry
-from microbiology.alerts import MicrobiologyAlert
+from ..microbiology.pathogens import PathogenRegistry
+from ..microbiology.alerts import MicrobiologyAlert
 
 def generate_episodes(ward_pos_all, registry: PathogenRegistry):
     """
@@ -110,75 +106,3 @@ def generate_alerts(episodes_df, registry: PathogenRegistry):
                 counter_id += 1
 
     return alerts
-
-if __name__ == "__main__":
-    # Redirect output to log.txt
-    with open('log.txt', 'w') as log_file:
-        sys.stdout = log_file
-
-        from database.db_loader import load_tables
-        from database.data_repository import DataRepository
-        from main_workflow.data_preparation import prepare_microbiology_data
-        from microbiology.pathogens import load_default_pathogens
-
-        db_path = "Final_ver_9_march/OOP_database.db"
-
-        tables = [
-            "PATIENTS",
-            "CAREGIVERS",
-            "D_ITEMS",
-            "ADMISSIONS",
-            "ICUSTAYS",
-            "NOTEEVENTS",
-            "MICROBIOLOGYEVENTS",
-            "TRANSFERS",
-            "OUTPUTEVENTS",
-            "CHARTEVENTS",
-        ]
-
-        # Load data
-        data = load_tables(db_path, tables)
-        repo = DataRepository.from_dict(data)
-
-
-        # Output organism names with ORG_ITEMID from data
-        organism_df = repo.microbiologyevents[['ORG_NAME', 'ORG_ITEMID']].drop_duplicates().dropna()
-        organism_items = list(zip(organism_df['ORG_NAME'], organism_df['ORG_ITEMID']))
-
-        # Load pathogen registry
-        registry = load_default_pathogens()
-
-        # Prepare data
-        ward_pos_all = prepare_microbiology_data(repo)
-
-        # Generate episodes
-        episodes_df = generate_episodes(ward_pos_all, registry)
-
-        # Generate alerts
-        alerts = generate_alerts(episodes_df, registry)
-
-        # Create alerts DataFrame
-        alerts_data = []
-        for alert in alerts:
-            alerts_data.append({
-                "ALERT_ID": alert.id,
-                "WARD_ID": alert.ward_id,
-                "ORG_ID": alert.org_id,
-                "ORG_NAME": alert.pathogen.key,
-                "NUM_PATIENTS": alert.curr_patient_number,
-                "CULTURE_EVENTS": episodes_df.loc[episodes_df["alert"] & (episodes_df["ward_id"] == alert.ward_id) & (episodes_df["org_name"] == alert.pathogen.key), "culture_events"].iloc[0] if len(episodes_df.loc[episodes_df["alert"] & (episodes_df["ward_id"] == alert.ward_id) & (episodes_df["org_name"] == alert.pathogen.key)]) > 0 else 0,
-                "START_TIME": alert.start_time,
-                "END_TIME": episodes_df.loc[episodes_df["alert"] & (episodes_df["ward_id"] == alert.ward_id) & (episodes_df["org_name"] == alert.pathogen.key), "end_time"].iloc[0] if len(episodes_df.loc[episodes_df["alert"] & (episodes_df["ward_id"] == alert.ward_id) & (episodes_df["org_name"] == alert.pathogen.key)]) > 0 else None,
-                "SEVERITY": int(alert.pathogen.danger_weight * 10),
-                "THRESHOLD": alert.pathogen.get_ward_threshold(alert.ward_size),
-                "WINDOW_DAYS": alert.pathogen.time_window_days
-            })
-
-        alerts_df = pd.DataFrame(alerts_data)
-        alerts_df = alerts_df.sort_values(by='START_TIME')
-        print("\nAlerts table:")
-        print(alerts_df.to_string(index=False))
-
-    # Restore stdout
-    sys.stdout = sys.__stdout__
-    print("Output written to log.txt")

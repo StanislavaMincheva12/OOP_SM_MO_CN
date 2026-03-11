@@ -1,6 +1,6 @@
 from abc import ABC, abstractmethod
 from dataclasses import dataclass
-from microbiology.pathogens import Pathogen
+from .pathogens import Pathogen
 from datetime import datetime
 from typing import Optional
 

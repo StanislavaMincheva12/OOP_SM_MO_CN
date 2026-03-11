@@ -3,10 +3,7 @@ import os
 sys.path.append(os.path.join(os.path.dirname(__file__), '..'))
 
 import pandas as pd
-import numpy as np
 from datetime import timedelta
-from collections import defaultdict
-
 
 
 def prepare_microbiology_data(data_repo):
@@ -71,14 +68,15 @@ def prepare_microbiology_data(data_repo):
     # Combine all wards
     ward_pos_all = pd.concat(all_ward_pos, ignore_index=True) if all_ward_pos else pd.DataFrame()
 
-    # Discharge times for ALL wards
+    # Discharge times for ALL wards with length of stay column (LOS)
     ward_discharges = {}
     for ward_id in ALL_WARD_IDS:
         ward_discharges[ward_id] = icustays[
             (icustays["FIRST_WARDID"] == ward_id) | (icustays["LAST_WARDID"] == ward_id)
-        ][["SUBJECT_ID", "OUTTIME"]].copy()
+        ][["SUBJECT_ID", "OUTTIME", "LOS"]].copy()
         ward_discharges[ward_id]["OUTTIME"] = pd.to_datetime(ward_discharges[ward_id]["OUTTIME"])
-
+        ward_discharges[ward_id]["LOS"] = ward_discharges[ward_id]["LOS"].astype('float')
+    
     # Join discharge times onto positive cultures (per-ward merge)
     ward_pos_list = []
     for ward_id in ALL_WARD_IDS:
@@ -91,19 +89,17 @@ def prepare_microbiology_data(data_repo):
                 suffixes=("", f"_ward{ward_id}")
             )
             ward_pos_list.append(ward_pos)
-
     ward_pos_all = pd.concat(ward_pos_list, ignore_index=True) if ward_pos_list else pd.DataFrame()
 
     # Ensure datetime consistency
     ward_pos_all["OUTTIME"] = pd.to_datetime(ward_pos_all["OUTTIME"], errors="coerce")
     ward_pos_all["CHARTDATE"] = pd.to_datetime(ward_pos_all["CHARTDATE"], errors="coerce")
-
     
     start_date = pd.to_datetime("2026-03-11")
 
     # Get unique patients
     patients = (
-        ward_pos_all[["SUBJECT_ID"]]
+        ward_pos_all[["SUBJECT_ID", "LOS"]] # add Length of Stay to record accurate stay
         .drop_duplicates()
         .sort_values("SUBJECT_ID")
         .reset_index(drop=True)
@@ -115,11 +111,10 @@ def prepare_microbiology_data(data_repo):
         for i in range(len(patients))
     ]
 
-    # OUTDATE = CHARTDATE + 3 days
-    patients["OUTDATE"] = patients["CHARTDATE"] + timedelta(days=3)
 
-    # OUTTIME = OUTDATE at 12:00
-    patients["OUTTIME"] = patients["OUTDATE"] + pd.Timedelta(hours=12)
+
+    # OUTTIME = CHARTTIME + Length of stay of a patient in ward
+    patients["OUTTIME"] = patients["CHARTDATE"] + pd.to_timedelta(patients["LOS"], unit="D")
 
     # Merge back to main table
     ward_pos_all = ward_pos_all.merge(
