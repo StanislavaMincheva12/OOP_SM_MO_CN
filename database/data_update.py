@@ -4,7 +4,7 @@ Connects log.txt pipeline → DB table.
 """
 
 import pandas as pd
-from .db_loader import get_db_connection 
+from .db_connector_loader import get_db_connection 
 
 def create_microalerts_table(db_path: str):
     """Recreate table matching alerts_df (first run only)."""

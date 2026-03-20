@@ -1,7 +1,9 @@
+"""This file is responsible for connecting the extracted, clean data frames with created microbiology alert classes into 1"""
+
 import pandas as pd
 from microbiology.pathogens import PathogenRegistry
 from microbiology.alerts import MicrobiologyAlert
-from database.db_loader import get_db_connection
+from database.db_connector_loader import get_db_connection
 
 def generate_episodes(ward_pos_all, registry: PathogenRegistry):
     episodes_all = []

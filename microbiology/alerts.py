@@ -1,3 +1,7 @@
+"""This file defines the Alert classes used in the microbiology alert system.
+
+"""
+
 from abc import ABC, abstractmethod
 from dataclasses import dataclass
 from microbiology.pathogens import Pathogen
