@@ -51,6 +51,14 @@ class PathogenRegistry:
 
     def __iter__(self):
         return iter(self._by_key.values())
+    
+    def all_pathogens(self):
+        """Return iterable of all registered Pathogen objects."""
+        return self._by_key.values()
+
+    def keys(self):
+        """Return all keys."""
+        return self._by_key.keys()
 
     def as_dataframe(self) -> pd.DataFrame:
         rows = [

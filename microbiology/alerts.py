@@ -7,6 +7,7 @@ from dataclasses import dataclass
 from microbiology.pathogens import Pathogen
 from datetime import datetime
 from typing import Optional
+from microbiology.patients import Patient
 
 class Alert(ABC):
 
@@ -51,6 +52,19 @@ class MicrobiologyAlert(Alert):
             f"{self.curr_patient_number}/{thresh} patients @ {self.start_time}"
         )
 
+    def to_dict(self):
+        return {
+            "ALERT_ID": self.id,
+            "WARD_ID": self.ward_id,
+            "ORG_ID": getattr(self, "org_id", 0),
+            "ORG_NAME": self.pathogen.key,
+            "NUM_PATIENTS": self.curr_patient_number,
+            "START_TIME": self.start_time,
+            "SEVERITY": int(self.pathogen.danger_weight * 10),
+            "THRESHOLD": self.pathogen.get_ward_threshold(self.ward_size),
+            "WINDOW_DAYS": self.pathogen.time_window_days
+        }
+
 
 @dataclass
 class WardAlert(Alert):
@@ -77,3 +91,5 @@ class WardAlert(Alert):
             f"({self.ward_size} beds) | {self.pathogen.org_name} | "
             f"{self.curr_patient_number}/{thresh} patients @ {self.start_time}"
         )
+
+
