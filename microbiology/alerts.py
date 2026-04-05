@@ -56,7 +56,7 @@ class MicrobiologyAlert(Alert):
         return {
             "ALERT_ID": self.id,
             "WARD_ID": self.ward_id,
-            "ORG_ID": getattr(self, "org_id", 0),
+            "ORG_ID": self.org_id,
             "ORG_NAME": self.pathogen.key,
             "NUM_PATIENTS": self.curr_patient_number,
             "START_TIME": self.start_time,

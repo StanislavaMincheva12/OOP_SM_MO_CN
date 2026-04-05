@@ -77,58 +77,107 @@ class PathogenRegistry:
 def load_default_pathogens():
     
     REGISTRY = PathogenRegistry()
+    
+    # Assign incremental org_id starting from 1
+    org_id_counter = 1
+    
     # HIGH-RISK (1 case triggers alert - MDR, C. diff, etc.)
-    REGISTRY.register("CLOSTRIDIUM DIFFICILE", org_id=None, danger_weight=3.0, time_window_days=3, ward_thresholds={5: 1, 10: 1, 20: 1}, staff_threshold=2)
-    REGISTRY.register("ACINETOBACTER BAUMANNII COMPLEX", org_id=None, danger_weight=3.0, time_window_days=3, ward_thresholds={5: 1, 10: 1, 20: 1}, staff_threshold=2)
-    REGISTRY.register("ACINETOBACTER BAUMANNII", org_id=None, danger_weight=3.0, time_window_days=3, ward_thresholds={5: 1, 10: 1, 20: 1}, staff_threshold=2)
-    REGISTRY.register("POSITIVE FOR METHICILLIN RESISTANT STAPH AUREUS", org_id=None, danger_weight=3.0, time_window_days=1, ward_thresholds={5: 1, 10: 1, 20: 2}, staff_threshold=1)
-    REGISTRY.register("PSEUDOMONAS AERUGINOSA", org_id=None, danger_weight=3.0, time_window_days=1, ward_thresholds={5: 1, 10: 1, 20: 2}, staff_threshold=1)
-    REGISTRY.register("KLEBSIELLA PNEUMONIAE", org_id=None, danger_weight=3.0, time_window_days=1, ward_thresholds={5: 1, 10: 1, 20: 1}, staff_threshold=1)
-    REGISTRY.register("ESCHERICHIA COLI", org_id=None, danger_weight=3.0, time_window_days=3, ward_thresholds={5: 1, 10: 1, 20: 2}, staff_threshold=1)
-    REGISTRY.register("STAPH AUREUS COAG +", org_id=None, danger_weight=3.0, time_window_days=1, ward_thresholds={5: 1, 10: 1, 20: 2}, staff_threshold=1)
-    REGISTRY.register("PROVIDENCIA STUARTII", org_id=None, danger_weight=2.5, time_window_days=2, ward_thresholds={5: 1, 10: 1, 20: 2}, staff_threshold=2)
-    REGISTRY.register("STENOTROPHOMONAS (XANTHOMONAS) MALTOPHILIA", org_id=None, danger_weight=2.5, time_window_days=2, ward_thresholds={5: 1, 10: 1, 20: 2}, staff_threshold=2)
+    REGISTRY.register("CLOSTRIDIUM DIFFICILE", org_id=org_id_counter, danger_weight=3.0, time_window_days=3, ward_thresholds={5: 1, 10: 1, 20: 1}, staff_threshold=2)
+    org_id_counter += 1
+    REGISTRY.register("ACINETOBACTER BAUMANNII COMPLEX", org_id=org_id_counter, danger_weight=3.0, time_window_days=3, ward_thresholds={5: 1, 10: 1, 20: 1}, staff_threshold=2)
+    org_id_counter += 1
+    REGISTRY.register("ACINETOBACTER BAUMANNII", org_id=org_id_counter, danger_weight=3.0, time_window_days=3, ward_thresholds={5: 1, 10: 1, 20: 1}, staff_threshold=2)
+    org_id_counter += 1
+    REGISTRY.register("POSITIVE FOR METHICILLIN RESISTANT STAPH AUREUS", org_id=org_id_counter, danger_weight=3.0, time_window_days=1, ward_thresholds={5: 1, 10: 1, 20: 2}, staff_threshold=1)
+    org_id_counter += 1
+    REGISTRY.register("PSEUDOMONAS AERUGINOSA", org_id=org_id_counter, danger_weight=3.0, time_window_days=1, ward_thresholds={5: 1, 10: 1, 20: 2}, staff_threshold=1)
+    org_id_counter += 1
+    REGISTRY.register("KLEBSIELLA PNEUMONIAE", org_id=org_id_counter, danger_weight=3.0, time_window_days=1, ward_thresholds={5: 1, 10: 1, 20: 1}, staff_threshold=1)
+    org_id_counter += 1
+    REGISTRY.register("ESCHERICHIA COLI", org_id=org_id_counter, danger_weight=3.0, time_window_days=3, ward_thresholds={5: 1, 10: 1, 20: 2}, staff_threshold=1)
+    org_id_counter += 1
+    REGISTRY.register("STAPH AUREUS COAG +", org_id=org_id_counter, danger_weight=3.0, time_window_days=1, ward_thresholds={5: 1, 10: 1, 20: 2}, staff_threshold=1)
+    org_id_counter += 1
+    REGISTRY.register("PROVIDENCIA STUARTII", org_id=org_id_counter, danger_weight=2.5, time_window_days=2, ward_thresholds={5: 1, 10: 1, 20: 2}, staff_threshold=2)
+    org_id_counter += 1
+    REGISTRY.register("STENOTROPHOMONAS (XANTHOMONAS) MALTOPHILIA", org_id=org_id_counter, danger_weight=2.5, time_window_days=2, ward_thresholds={5: 1, 10: 1, 20: 2}, staff_threshold=2)
+    org_id_counter += 1
 
     # MEDIUM-RISK (2 cases - Enterobacteriaceae, fungi, anaerobes)
-    REGISTRY.register("GRAM NEGATIVE ROD(S)", org_id=None, danger_weight=1.5, time_window_days=2, ward_thresholds={5: 1, 10: 1, 20: 2}, staff_threshold=3)
-    REGISTRY.register("GRAM NEGATIVE ROD #1", org_id=None, danger_weight=1.5, time_window_days=2, ward_thresholds={5: 1, 10: 1, 20: 2}, staff_threshold=3)
-    REGISTRY.register("GRAM NEGATIVE ROD #2", org_id=None, danger_weight=2.0, time_window_days=2, ward_thresholds={5: 1, 10: 2, 20: 3}, staff_threshold=2)
-    REGISTRY.register("GRAM NEGATIVE ROD #3", org_id=None, danger_weight=2.0, time_window_days=2, ward_thresholds={5: 1, 10: 2, 20: 3}, staff_threshold=2)
-    REGISTRY.register("GRAM NEGATIVE ROD #4", org_id=None, danger_weight=2.0, time_window_days=2, ward_thresholds={5: 1, 10: 2, 20: 3}, staff_threshold=2)
-    REGISTRY.register("ENTEROBACTERIACEAE", org_id=None, danger_weight=2.0, time_window_days=2, ward_thresholds={5: 2, 10: 2, 20: 3}, staff_threshold=3)
-    REGISTRY.register("KLEBSIELLA OXYTOCA", org_id=None, danger_weight=2.5, time_window_days=2, ward_thresholds={5: 1, 10: 2, 20: 3}, staff_threshold=2)
-    REGISTRY.register("PROTEUS MIRABILIS", org_id=None, danger_weight=1.5, time_window_days=1, ward_thresholds={5: 2, 10: 3, 20: 4}, staff_threshold=3)
-    REGISTRY.register("PROTEUS SPECIES", org_id=None, danger_weight=1.5, time_window_days=1, ward_thresholds={5: 2, 10: 3, 20: 4}, staff_threshold=3)
-    REGISTRY.register("SERRATIA MARCESCENS", org_id=None, danger_weight=2.5, time_window_days=2, ward_thresholds={5: 1, 10: 2, 20: 3}, staff_threshold=2)
-    REGISTRY.register("MORGANELLA MORGANII", org_id=None, danger_weight=2.0, time_window_days=2, ward_thresholds={5: 2, 10: 2, 20: 3}, staff_threshold=3)
-    REGISTRY.register("PROVIDENCIA RETTGERI", org_id=None, danger_weight=2.0, time_window_days=2, ward_thresholds={5: 2, 10: 2, 20: 3}, staff_threshold=3)
-    REGISTRY.register("ASPERGILLUS SP. NOT FUMIGATUS, FLAVUS OR NIGER", org_id=None, danger_weight=1.5, time_window_days=2, ward_thresholds={5: 1, 10: 1, 20: 2}, staff_threshold=2)
-    REGISTRY.register("MYCELIA STERILIA", org_id=None, danger_weight=1.0, time_window_days=4, ward_thresholds={5: 2, 10: 3, 20: 4}, staff_threshold=4)
-    REGISTRY.register("BACTEROIDES FRAGILIS GROUP", org_id=None, danger_weight=1.5, time_window_days=3, ward_thresholds={5: 2, 10: 2, 20: 3}, staff_threshold=3)
-    REGISTRY.register("ANAEROBIC GRAM POSITIVE ROD(S)", org_id=None, danger_weight=1.5, time_window_days=3, ward_thresholds={5: 2, 10: 2, 20: 3}, staff_threshold=3)
+    REGISTRY.register("GRAM NEGATIVE ROD(S)", org_id=org_id_counter, danger_weight=1.5, time_window_days=2, ward_thresholds={5: 1, 10: 1, 20: 2}, staff_threshold=3)
+    org_id_counter += 1
+    REGISTRY.register("GRAM NEGATIVE ROD #1", org_id=org_id_counter, danger_weight=1.5, time_window_days=2, ward_thresholds={5: 1, 10: 1, 20: 2}, staff_threshold=3)
+    org_id_counter += 1
+    REGISTRY.register("GRAM NEGATIVE ROD #2", org_id=org_id_counter, danger_weight=2.0, time_window_days=2, ward_thresholds={5: 1, 10: 2, 20: 3}, staff_threshold=2)
+    org_id_counter += 1
+    REGISTRY.register("GRAM NEGATIVE ROD #3", org_id=org_id_counter, danger_weight=2.0, time_window_days=2, ward_thresholds={5: 1, 10: 2, 20: 3}, staff_threshold=2)
+    org_id_counter += 1
+    REGISTRY.register("GRAM NEGATIVE ROD #4", org_id=org_id_counter, danger_weight=2.0, time_window_days=2, ward_thresholds={5: 1, 10: 2, 20: 3}, staff_threshold=2)
+    org_id_counter += 1
+    REGISTRY.register("ENTEROBACTERIACEAE", org_id=org_id_counter, danger_weight=2.0, time_window_days=2, ward_thresholds={5: 2, 10: 2, 20: 3}, staff_threshold=3)
+    org_id_counter += 1
+    REGISTRY.register("KLEBSIELLA OXYTOCA", org_id=org_id_counter, danger_weight=2.5, time_window_days=2, ward_thresholds={5: 1, 10: 2, 20: 3}, staff_threshold=2)
+    org_id_counter += 1
+    REGISTRY.register("PROTEUS MIRABILIS", org_id=org_id_counter, danger_weight=1.5, time_window_days=1, ward_thresholds={5: 2, 10: 3, 20: 4}, staff_threshold=3)
+    org_id_counter += 1
+    REGISTRY.register("PROTEUS SPECIES", org_id=org_id_counter, danger_weight=1.5, time_window_days=1, ward_thresholds={5: 2, 10: 3, 20: 4}, staff_threshold=3)
+    org_id_counter += 1
+    REGISTRY.register("SERRATIA MARCESCENS", org_id=org_id_counter, danger_weight=2.5, time_window_days=2, ward_thresholds={5: 1, 10: 2, 20: 3}, staff_threshold=2)
+    org_id_counter += 1
+    REGISTRY.register("MORGANELLA MORGANII", org_id=org_id_counter, danger_weight=2.0, time_window_days=2, ward_thresholds={5: 2, 10: 2, 20: 3}, staff_threshold=3)
+    org_id_counter += 1
+    REGISTRY.register("PROVIDENCIA RETTGERI", org_id=org_id_counter, danger_weight=2.0, time_window_days=2, ward_thresholds={5: 2, 10: 2, 20: 3}, staff_threshold=3)
+    org_id_counter += 1
+    REGISTRY.register("ASPERGILLUS SP. NOT FUMIGATUS, FLAVUS OR NIGER", org_id=org_id_counter, danger_weight=1.5, time_window_days=2, ward_thresholds={5: 1, 10: 1, 20: 2}, staff_threshold=2)
+    org_id_counter += 1
+    REGISTRY.register("MYCELIA STERILIA", org_id=org_id_counter, danger_weight=1.0, time_window_days=4, ward_thresholds={5: 2, 10: 3, 20: 4}, staff_threshold=4)
+    org_id_counter += 1
+    REGISTRY.register("BACTEROIDES FRAGILIS GROUP", org_id=org_id_counter, danger_weight=1.5, time_window_days=3, ward_thresholds={5: 2, 10: 2, 20: 3}, staff_threshold=3)
+    org_id_counter += 1
+    REGISTRY.register("ANAEROBIC GRAM POSITIVE ROD(S)", org_id=org_id_counter, danger_weight=1.5, time_window_days=3, ward_thresholds={5: 2, 10: 2, 20: 3}, staff_threshold=3)
+    org_id_counter += 1
 
     # LOW-RISK (3+ cases - colonizers, skin flora)
-    REGISTRY.register("STAPHYLOCOCCUS, COAGULASE NEGATIVE", org_id=None, danger_weight=1.5, time_window_days=1, ward_thresholds={5: 2, 10: 2, 20: 3}, staff_threshold=2)
-    REGISTRY.register("YEAST", org_id=None, danger_weight=1.0, time_window_days=3, ward_thresholds={5: 1, 10: 1, 20: 3}, staff_threshold=4)
-    REGISTRY.register("CANDIDA ALBICANS, PRESUMPTIVE IDENTIFICATION", org_id=None, danger_weight=1.0, time_window_days=2, ward_thresholds={5: 1, 10: 1, 20: 2}, staff_threshold=3)
-    REGISTRY.register("STREPTOCOCCUS SPECIES", org_id=None, danger_weight=1.0, time_window_days=2, ward_thresholds={5: 1, 10: 2, 20: 3}, staff_threshold=4)
-    REGISTRY.register("STREPTOCOCCUS PNEUMONIAE", org_id=None, danger_weight=1.5, time_window_days=2, ward_thresholds={5: 1, 10: 2, 20: 3}, staff_threshold=3)
-    REGISTRY.register("ENTEROCOCCUS FAECALIS", org_id=None, danger_weight=1.5, time_window_days=2, ward_thresholds={5: 2, 10: 2, 20: 3}, staff_threshold=3)
-    REGISTRY.register("ENTEROCOCCUS FAECIUM", org_id=None, danger_weight=2.0, time_window_days=2, ward_thresholds={5: 2, 10: 2, 20: 3}, staff_threshold=3)
-    REGISTRY.register("ENTEROCOCCUS SP.", org_id=None, danger_weight=1.5, time_window_days=2, ward_thresholds={5: 2, 10: 2, 20: 3}, staff_threshold=3)
-    REGISTRY.register("PROBABLE ENTEROCOCCUS", org_id=None, danger_weight=1.5, time_window_days=2, ward_thresholds={5: 2, 10: 2, 20: 3}, staff_threshold=3)
-    REGISTRY.register("ALPHA STREPTOCOCCI", org_id=None, danger_weight=1.0, time_window_days=2, ward_thresholds={5: 2, 10: 3, 20: 4}, staff_threshold=4)
-    REGISTRY.register("BETA STREPTOCOCCUS GROUP B", org_id=None, danger_weight=1.5, time_window_days=2, ward_thresholds={5: 2, 10: 2, 20: 3}, staff_threshold=3)
-    REGISTRY.register("PRESUMPTIVE STREPTOCOCCUS BOVIS", org_id=None, danger_weight=1.5, time_window_days=2, ward_thresholds={5: 2, 10: 2, 20: 3}, staff_threshold=3)
-    REGISTRY.register("GRAM POSITIVE COCCUS(COCCI)", org_id=None, danger_weight=1.0, time_window_days=2, ward_thresholds={5: 2, 10: 3, 20: 4}, staff_threshold=4)
-    REGISTRY.register("GRAM POSITIVE RODS", org_id=None, danger_weight=1.5, time_window_days=2, ward_thresholds={5: 2, 10: 3, 20: 4}, staff_threshold=3)
-    REGISTRY.register("CORYNEBACTERIUM SPECIES (DIPHTHEROIDS)", org_id=None, danger_weight=2.0, time_window_days=2, ward_thresholds={5: 1, 10: 2, 20: 3}, staff_threshold=2)
-    REGISTRY.register("CORYNEBACTERIUM STRIATUM", org_id=None, danger_weight=2.0, time_window_days=2, ward_thresholds={5: 1, 10: 2, 20: 3}, staff_threshold=2)
-    REGISTRY.register("LACTOBACILLUS SPECIES", org_id=None, danger_weight=1.0, time_window_days=3, ward_thresholds={5: 3, 10: 4, 20: 5}, staff_threshold=4)
-    REGISTRY.register("MYCOBACTERIUM AVIUM COMPLEX", org_id=None, danger_weight=1.5, time_window_days=1, ward_thresholds={5: 1, 10: 2, 20: 4}, staff_threshold=3)
-    REGISTRY.register("GRAM POSITIVE BACTERIA", org_id=None, danger_weight=1.0, time_window_days=2, ward_thresholds={5: 2, 10: 3, 20: 4}, staff_threshold=4)
+    REGISTRY.register("STAPHYLOCOCCUS, COAGULASE NEGATIVE", org_id=org_id_counter, danger_weight=1.5, time_window_days=1, ward_thresholds={5: 2, 10: 2, 20: 3}, staff_threshold=2)
+    org_id_counter += 1
+    REGISTRY.register("YEAST", org_id=org_id_counter, danger_weight=1.0, time_window_days=3, ward_thresholds={5: 1, 10: 1, 20: 3}, staff_threshold=4)
+    org_id_counter += 1
+    REGISTRY.register("CANDIDA ALBICANS, PRESUMPTIVE IDENTIFICATION", org_id=org_id_counter, danger_weight=1.0, time_window_days=2, ward_thresholds={5: 1, 10: 1, 20: 2}, staff_threshold=3)
+    org_id_counter += 1
+    REGISTRY.register("STREPTOCOCCUS SPECIES", org_id=org_id_counter, danger_weight=1.0, time_window_days=2, ward_thresholds={5: 1, 10: 2, 20: 3}, staff_threshold=4)
+    org_id_counter += 1
+    REGISTRY.register("STREPTOCOCCUS PNEUMONIAE", org_id=org_id_counter, danger_weight=1.5, time_window_days=2, ward_thresholds={5: 1, 10: 2, 20: 3}, staff_threshold=3)
+    org_id_counter += 1
+    REGISTRY.register("ENTEROCOCCUS FAECALIS", org_id=org_id_counter, danger_weight=1.5, time_window_days=2, ward_thresholds={5: 2, 10: 2, 20: 3}, staff_threshold=3)
+    org_id_counter += 1
+    REGISTRY.register("ENTEROCOCCUS FAECIUM", org_id=org_id_counter, danger_weight=2.0, time_window_days=2, ward_thresholds={5: 2, 10: 2, 20: 3}, staff_threshold=3)
+    org_id_counter += 1
+    REGISTRY.register("ENTEROCOCCUS SP.", org_id=org_id_counter, danger_weight=1.5, time_window_days=2, ward_thresholds={5: 2, 10: 2, 20: 3}, staff_threshold=3)
+    org_id_counter += 1
+    REGISTRY.register("PROBABLE ENTEROCOCCUS", org_id=org_id_counter, danger_weight=1.5, time_window_days=2, ward_thresholds={5: 2, 10: 2, 20: 3}, staff_threshold=3)
+    org_id_counter += 1
+    REGISTRY.register("ALPHA STREPTOCOCCI", org_id=org_id_counter, danger_weight=1.0, time_window_days=2, ward_thresholds={5: 2, 10: 3, 20: 4}, staff_threshold=4)
+    org_id_counter += 1
+    REGISTRY.register("BETA STREPTOCOCCUS GROUP B", org_id=org_id_counter, danger_weight=1.5, time_window_days=2, ward_thresholds={5: 2, 10: 2, 20: 3}, staff_threshold=3)
+    org_id_counter += 1
+    REGISTRY.register("PRESUMPTIVE STREPTOCOCCUS BOVIS", org_id=org_id_counter, danger_weight=1.5, time_window_days=2, ward_thresholds={5: 2, 10: 2, 20: 3}, staff_threshold=3)
+    org_id_counter += 1
+    REGISTRY.register("GRAM POSITIVE COCCUS(COCCI)", org_id=org_id_counter, danger_weight=1.0, time_window_days=2, ward_thresholds={5: 2, 10: 3, 20: 4}, staff_threshold=4)
+    org_id_counter += 1
+    REGISTRY.register("GRAM POSITIVE RODS", org_id=org_id_counter, danger_weight=1.5, time_window_days=2, ward_thresholds={5: 2, 10: 3, 20: 4}, staff_threshold=3)
+    org_id_counter += 1
+    REGISTRY.register("CORYNEBACTERIUM SPECIES (DIPHTHEROIDS)", org_id=org_id_counter, danger_weight=2.0, time_window_days=2, ward_thresholds={5: 1, 10: 2, 20: 3}, staff_threshold=2)
+    org_id_counter += 1
+    REGISTRY.register("CORYNEBACTERIUM STRIATUM", org_id=org_id_counter, danger_weight=2.0, time_window_days=2, ward_thresholds={5: 1, 10: 2, 20: 3}, staff_threshold=2)
+    org_id_counter += 1
+    REGISTRY.register("LACTOBACILLUS SPECIES", org_id=org_id_counter, danger_weight=1.0, time_window_days=3, ward_thresholds={5: 3, 10: 4, 20: 5}, staff_threshold=4)
+    org_id_counter += 1
+    REGISTRY.register("MYCOBACTERIUM AVIUM COMPLEX", org_id=org_id_counter, danger_weight=1.5, time_window_days=1, ward_thresholds={5: 1, 10: 2, 20: 4}, staff_threshold=3)
+    org_id_counter += 1
+    REGISTRY.register("GRAM POSITIVE BACTERIA", org_id=org_id_counter, danger_weight=1.0, time_window_days=2, ward_thresholds={5: 2, 10: 3, 20: 4}, staff_threshold=4)
+    org_id_counter += 1
 
     # GENERIC / LOW-SIGNAL
-    REGISTRY.register("ORGANISM", org_id=None, danger_weight=0.5, time_window_days=7, ward_thresholds={5: 5, 10: 7, 20: 10}, staff_threshold=5)
+    REGISTRY.register("ORGANISM", org_id=org_id_counter, danger_weight=0.5, time_window_days=7, ward_thresholds={5: 5, 10: 7, 20: 10}, staff_threshold=5)
 
     return REGISTRY

@@ -1,40 +1,53 @@
 """
-This file is responsible for building repo for all tables from the database in df objects, so we can use them later.
+DataRepository centralises access to MIMIC-style tables and supports lazy table loading.
 """
 
+from __future__ import annotations
 
-from dataclasses import dataclass
+from typing import Optional
 import pandas as pd
+from database.db_connector_loader import TableLoader
 
 
-@dataclass
 class DataRepository:
+    TABLES = [
+        "PATIENTS", "CAREGIVERS", "D_ITEMS", "ADMISSIONS", "ICUSTAYS",
+        "NOTEEVENTS", "MICROBIOLOGYEVENTS", "TRANSFERS", "OUTPUTEVENTS", "CHARTEVENTS"
+    ]
 
-    """
-    Stores all tables in one object. So tables can be called using object.table_name in main.py.
-    """
-    patients: pd.DataFrame
-    caregivers: pd.DataFrame
-    d_items: pd.DataFrame
-    admissions: pd.DataFrame
-    icustays: pd.DataFrame
-    noteevents: pd.DataFrame
-    microbiologyevents: pd.DataFrame
-    transfers: pd.DataFrame
-    outputevents: pd.DataFrame
-    chartevents: pd.DataFrame
+    def __init__(self, loader: Optional[TableLoader] = None, data: Optional[dict[str, pd.DataFrame]] = None):
+        self._loader = loader
+        self._data = data or {}
+        self._cache: dict[str, pd.DataFrame] = {}
 
     @classmethod
-    def from_dict(cls, data: dict):
-        return cls(
-            patients=data["PATIENTS"],
-            caregivers=data["CAREGIVERS"],
-            d_items=data["D_ITEMS"],
-            admissions=data["ADMISSIONS"],
-            icustays=data["ICUSTAYS"],
-            noteevents=data["NOTEEVENTS"],
-            microbiologyevents=data["MICROBIOLOGYEVENTS"],
-            transfers=data["TRANSFERS"],
-            outputevents=data["OUTPUTEVENTS"],
-            chartevents=data["CHARTEVENTS"],
-        )
+    def from_dict(cls, data: dict[str, pd.DataFrame]) -> "DataRepository":
+        return cls(data=data)
+
+    @classmethod
+    def from_db(cls, db_path: str, tables: list[str]) -> "DataRepository":
+        return cls(loader=TableLoader(db_path), data={})
+
+    def _load_table(self, table_name: str) -> pd.DataFrame:
+        table_name = table_name.upper()
+        if table_name not in self._cache:
+            if table_name in self._data:
+                self._cache[table_name] = self._data[table_name]
+            elif self._loader is not None:
+                self._cache[table_name] = self._loader.load_table(table_name)
+            else:
+                raise KeyError(f"Table '{table_name}' is not available in the repository.")
+        return self._cache[table_name]
+
+    def get_table(self, table_name: str) -> pd.DataFrame:
+        return self._load_table(table_name)
+
+    def load_all(self) -> None:
+        for table in self.TABLES:
+            self._load_table(table)
+
+    def __getattr__(self, name: str) -> pd.DataFrame:
+        name_upper = name.upper()
+        if name_upper in self.TABLES:
+            return self._load_table(name_upper)
+        raise AttributeError(f"{type(self).__name__!r} object has no attribute {name!r}")

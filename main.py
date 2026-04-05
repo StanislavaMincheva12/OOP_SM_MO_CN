@@ -6,9 +6,10 @@ from database.data_update import create_microalerts_table, update_microalerts
 
 from visualization.visualization import AlertsLoader, AlertsDashboard
 
-from pipeline.microbiology_pipeline import MicrobiologyPipeline
+from pipeline.hospital_alert_system import HospitalAlertSystem
 
 from utils.logger import AlertsLogger
+import pandas as pd
 
 
 # Stating the global parameteres
@@ -22,8 +23,9 @@ TABLES = [
 
 # Main run
 if __name__ == "__main__":
-    pipeline = MicrobiologyPipeline(DB_PATH, TABLES)
-    alerts_df = pipeline.run()
+    system = HospitalAlertSystem(DB_PATH, TABLES)
+    alerts = system.run()
+    alerts_df = pd.DataFrame([alert.to_dict() for alert in alerts])
 
     logger = AlertsLogger()
     logger.log(alerts_df)

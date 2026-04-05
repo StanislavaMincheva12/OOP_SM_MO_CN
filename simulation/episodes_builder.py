@@ -1,12 +1,100 @@
-from microbiology.pathogens import PathogenRegistry
+from __future__ import annotations
+
+from dataclasses import dataclass, field
+from datetime import datetime
+from typing import List, Optional, Set
 import pandas as pd
+from microbiology.pathogens import PathogenRegistry, Pathogen
+
+
+@dataclass
+class CultureEpisode:
+    episode_id: int
+    ward_id: int
+    ward_size: int
+    pathogen: Pathogen
+    start_time: Optional[datetime] = None
+    end_time: Optional[datetime] = None
+    patient_ids: Set[int] = field(default_factory=set)
+    culture_events: int = 0
+    window_days: int = 0
+    threshold: int = 0
+    alert: bool = False
+
+    @property
+    def org_name(self) -> str:
+        return self.pathogen.key
+
+    @property
+    def unique_patients(self) -> int:
+        return len(self.patient_ids)
+
+    def should_alert(self) -> bool:
+        return self.unique_patients >= self.threshold
+
+    def to_dict(self) -> dict:
+        return {
+            "EPISODE_ID": self.episode_id,
+            "WARD_ID": self.ward_id,
+            "ORG_NAME": self.org_name,
+            "NUM_PATIENTS": self.unique_patients,
+            "START_TIME": self.start_time,
+            "END_TIME": self.end_time,
+            "CULTURE_EVENTS": self.culture_events,
+            "THRESHOLD": self.threshold,
+            "WINDOW_DAYS": self.window_days,
+            "ALERT": self.alert,
+        }
+
+
+class CultureEpisodeBuilder:
+    def __init__(self, episode_id: int, ward_id: int, ward_size: int, pathogen: Pathogen):
+        self.episode_id = episode_id
+        self.ward_id = ward_id
+        self.ward_size = ward_size
+        self.pathogen = pathogen
+        self.start_time: Optional[datetime] = None
+        self.end_time: Optional[datetime] = None
+        self.patient_ids: Set[int] = set()
+        self.culture_events = 0
+
+    def add_event(self, row: pd.Series) -> None:
+        chartdate = row["CHARTDATE"]
+        outtime = row["OUTTIME"]
+
+        if pd.notna(chartdate) and (self.start_time is None or chartdate < self.start_time):
+            self.start_time = chartdate
+        if pd.notna(outtime) and (self.end_time is None or outtime > self.end_time):
+            self.end_time = outtime
+
+        self.culture_events += 1
+        if pd.notna(row["SUBJECT_ID"]):
+            self.patient_ids.add(int(row["SUBJECT_ID"]))
+
+    def build(self) -> CultureEpisode:
+        threshold = self.pathogen.get_ward_threshold(self.ward_size)
+        alert = len(self.patient_ids) >= threshold
+        return CultureEpisode(
+            episode_id=self.episode_id,
+            ward_id=self.ward_id,
+            ward_size=self.ward_size,
+            pathogen=self.pathogen,
+            start_time=self.start_time,
+            end_time=self.end_time,
+            patient_ids=self.patient_ids,
+            culture_events=self.culture_events,
+            window_days=self.pathogen.time_window_days,
+            threshold=threshold,
+            alert=alert,
+        )
+
 
 class EpisodesBuilder:
     def __init__(self, registry: PathogenRegistry):
         self.registry = registry
 
-    def generate(self, ward_pos_all: pd.DataFrame) -> pd.DataFrame:
-        episodes_all = []
+    def generate(self, ward_pos_all: pd.DataFrame) -> List[CultureEpisode]:
+        episodes: List[CultureEpisode] = []
 
         for pathogen in self.registry.all_pathogens():
             org_name = pathogen.key
@@ -14,66 +102,38 @@ class EpisodesBuilder:
             if ward_data.empty:
                 continue
 
-            ward_episodes = []
             for ward_id, ward_group in ward_data.groupby("WARD_ID"):
                 df = ward_group.sort_values("CHARTDATE").reset_index(drop=True)
-                ward_size = ward_group["WARD_SIZE"].iloc[0]
-
-                episode_ids = []
+                ward_size = int(ward_group["WARD_SIZE"].iloc[0])
                 episode_id = 0
-                episode_start = None
-                episode_end = None
+                builder: Optional[CultureEpisodeBuilder] = None
 
                 for _, row in df.iterrows():
-                    if episode_start is None:
-                        episode_start = row["CHARTDATE"]
-                        episode_end = row["OUTTIME"]
-                        episode_ids.append(episode_id)
-                    else:
-                        still_occupied = (
-                            pd.notna(episode_end) and pd.notna(row["CHARTDATE"])
-                            and row["CHARTDATE"] <= episode_end
-                        )
-                        gap = (
-                            (row["CHARTDATE"] - episode_start).total_seconds() / 86400
-                            if pd.notna(row["CHARTDATE"]) and pd.notna(episode_start)
-                            else float("inf")
-                        )
+                    if builder is None:
+                        builder = CultureEpisodeBuilder(episode_id, ward_id, ward_size, pathogen)
+                        builder.add_event(row)
+                        continue
 
-                        if still_occupied or gap <= pathogen.time_window_days:
-                            if pd.notna(row["OUTTIME"]):
-                                episode_end = max(episode_end, row["OUTTIME"])
-                        else:
-                            episode_id += 1
-                            episode_start = row["CHARTDATE"]
-                            episode_end = row["OUTTIME"]
+                    still_occupied = (
+                        pd.notna(builder.end_time) and pd.notna(row["CHARTDATE"]) and row["CHARTDATE"] <= builder.end_time
+                    )
+                    gap = (
+                        (row["CHARTDATE"] - builder.start_time).total_seconds() / 86400
+                        if pd.notna(row["CHARTDATE"]) and pd.notna(builder.start_time)
+                        else float("inf")
+                    )
 
-                        episode_ids.append(episode_id)
+                    if not still_occupied and gap > pathogen.time_window_days:
+                        episodes.append(builder.build())
+                        episode_id += 1
+                        builder = CultureEpisodeBuilder(episode_id, ward_id, ward_size, pathogen)
 
-                df["EPISODE_ID"] = episode_ids
+                    if builder is None:
+                        builder = CultureEpisodeBuilder(episode_id, ward_id, ward_size, pathogen)
+                    builder.add_event(row)
 
-                ep = df.groupby("EPISODE_ID").agg(
-                    start_time=("CHARTDATE", "min"),
-                    end_time=("OUTTIME", "max"),
-                    culture_events=("ROW_ID", "count"),
-                    patient_id=("SUBJECT_ID", "first"),
-                    unique_patients=("SUBJECT_ID", "nunique")
-                ).reset_index(drop=True)
+                if builder is not None:
+                    episodes.append(builder.build())
 
-                ep["ward_id"] = ward_id
-                ep["ward_size"] = ward_size
-                ep["org_name"] = pathogen.key
-                ep["danger_weight"] = pathogen.danger_weight
-                ep["window_days"] = pathogen.time_window_days
-                ep["threshold"] = pathogen.get_ward_threshold(ward_size)
-                ep["alert"] = ep["unique_patients"] >= ep["threshold"]
-
-                ward_episodes.append(ep)
-
-            if ward_episodes:
-                pathogen_ep = pd.concat(ward_episodes, ignore_index=True)
-                episodes_all.append(pathogen_ep)
-
-        episodes_df = pd.concat(episodes_all, ignore_index=True) if episodes_all else pd.DataFrame()
-        print(f"Generated {len(episodes_df)} episodes across {episodes_df['ward_id'].nunique() if not episodes_df.empty else 0} wards")
-        return episodes_df
+        print(f"Generated {len(episodes)} episodes across {len({ep.ward_id for ep in episodes})} wards")
+        return episodes

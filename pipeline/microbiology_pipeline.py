@@ -14,26 +14,20 @@ class MicrobiologyPipeline:
         self.tables = tables
 
     def run(self):
-        # Load data using loader
         loader = TableLoader(self.db_path)
         data = loader.load_tables(self.tables)
 
-        # Use repo
         repo = DataRepository.from_dict(data)
         registry = load_default_pathogens()
 
-        # Use Preparer object to make data preparations
         data_preparer = MicrobiologyDataPreparer(repo)
         ward_pos_all = data_preparer.prepare()
-        
-        # Use episodes builder to make episodes from microbiological data
-        ep_builder = EpisodesBuilder(registry)
-        episodes_df = ep_builder.generate(ward_pos_all)
 
-        # Use alerts generator to generate alerts from episodes
+        ep_builder = EpisodesBuilder(registry)
+        episodes = ep_builder.generate(ward_pos_all)
+
         generator = AlertGenerator(registry)
-        alerts, patients = generator.generate(episodes_df)
+        alerts, _ = generator.generate(episodes)
 
         alerts_df = pd.DataFrame([a.to_dict() for a in alerts])
-
         return alerts_df
